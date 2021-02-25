@@ -4,6 +4,17 @@ import './Body.css';
 function Body() {
 	return (
 		<div className="Body">
+			<div className="customer">
+				<span>
+					<h4>Bill to : </h4>
+					<h3>Mubashir</h3>
+				</span>
+				<span>
+					<h4>Credit : </h4>
+					<h3>2906/-</h3>
+				</span>
+			</div>
+			<br></br>
 			<table>
 				<tr>
 					<th>No.</th>
@@ -37,12 +48,6 @@ function Body() {
 					<th colspan="3">Amount : 15000/-</th>
 				</tr>
 			</table>
-			<br></br>
-			<br></br>
-			<span>
-				<h2>mubashir</h2>
-				<h3>Credit : 2946</h3>
-			</span>
 		</div>
 	);
 }

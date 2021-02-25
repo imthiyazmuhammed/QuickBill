@@ -12,3 +12,7 @@ table {
 	padding: 5px;
 	margin-top: 10px;
 }
+.customer {
+	display: flex;
+	justify-content: space-between;
+}
