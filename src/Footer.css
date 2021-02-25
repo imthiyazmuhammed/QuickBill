@@ -1,0 +1,13 @@
+.Footer {
+	display: flex;
+
+	justify-content: space-around;
+	padding: 10px;
+	background-color: #87caac;
+	bottom: 0 !important;
+	position: fixed;
+	width: 100%;
+}
+.Account {
+	font-size: 5vh;
+}
