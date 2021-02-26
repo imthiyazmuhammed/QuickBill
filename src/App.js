@@ -3,6 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Body from './Body';
 import Products from './Products';
+import Customer from './Customer'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
 					</Route>
 					<Route path="/customer">
 						<Header />
-						<Products />
+						<Customer />
 					</Route>
 					<Route path="/">
 						<Header />
