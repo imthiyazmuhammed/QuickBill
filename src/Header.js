@@ -6,7 +6,7 @@ function Header() {
 	return (
 		<div className="Header">
 			<Link to="/">
-				<h1>💸 QuickBill</h1>
+				<h3>💸 QuickBill</h3>
 			</Link>
 			<div className="header__search">
 				<input className="header__searchinput" type="text" />

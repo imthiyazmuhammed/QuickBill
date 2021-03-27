@@ -16,7 +16,7 @@
 }
 .header__searchicon {
 	padding: 5px;
-	height: 22px !important;
+	height: 20px !important;
 	background-color: #cd9042;
 	margin-right: 10px;
 }
@@ -26,4 +26,7 @@
 	border: none;
 	width: 100%;
 	margin-left: 10px;
+}
+.header > h1 {
+	font-size: small;
 }

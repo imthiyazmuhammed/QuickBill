@@ -1,0 +1,11 @@
+.form-control,
+.AddProduct,
+.form {
+	margin: 5px;
+}
+h4 {
+	text-align: center;
+}
+button {
+	align: center;
+}

@@ -6,12 +6,12 @@ function Body() {
 		<div className="Body">
 			<div className="customer">
 				<span>
-					<h4>Bill to : </h4>
-					<h3>Mubashir</h3>
+					<h5>Bill to : </h5>
+					<h6>Mubashir</h6>
 				</span>
 				<span>
-					<h4>Credit : </h4>
-					<h3>2906/-</h3>
+					<h5>Credit : </h5>
+					<h6>2906/-</h6>
 				</span>
 			</div>
 			<br></br>
