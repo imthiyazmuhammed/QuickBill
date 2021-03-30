@@ -1,5 +1,12 @@
-.retailer {
+.customer {
 	display: flex;
-	justify-content: space-between;
-	padding: 5px;
+	justify-content: left;
+}
+.retailer,
+h5 {
+	padding: 15px;
+}
+
+.avatar {
+	margin: 10px;
 }

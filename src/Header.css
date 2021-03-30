@@ -1,4 +1,4 @@
-.Header {
+/* .Header {
 	font-size: 70%;
 	height: 60px;
 	display: flex;
@@ -29,4 +29,18 @@
 }
 .header > h1 {
 	font-size: small;
+}
+ */
+.form-control {
+	padding: 10px;
+	margin-left: 20px !important;
+	width: 100%;
+}
+.d-flex {
+	display: flex;
+	flex: 1;
+	align-items: center;
+}
+h3 {
+	text-decoration: none;
 }

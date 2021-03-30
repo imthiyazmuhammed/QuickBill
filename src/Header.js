@@ -5,13 +5,25 @@ import { Link } from 'react-router-dom';
 function Header() {
 	return (
 		<div className="Header">
-			<Link to="/">
-				<h3>💸 QuickBill</h3>
-			</Link>
-			<div className="header__search">
-				<input className="header__searchinput" type="text" />
-				<SearchIcon className="header__searchicon" />
-			</div>
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+				<div class="container-fluid">
+					<Link to="/">
+						<h3>💸 QuickBill</h3>
+					</Link>
+
+					<form class="d-flex">
+						<input
+							class="form-control me-2" 
+							type="search"
+							placeholder="Search"
+							aria-label="Search"
+						/>
+						<button class="btn btn-outline-success" type="submit">
+							Search
+						</button>
+					</form>
+				</div>
+			</nav>
 		</div>
 	);
 }

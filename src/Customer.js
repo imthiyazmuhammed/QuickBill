@@ -8,10 +8,11 @@ function Customer() {
 	const [{ user }] = useStateValue();
 	return (
 		<div className="customer">
-			<div className="retailer">
-				<Avatar className="avatar" alt={user?.displayName} src={user?.photoURL} />
-				<h3> hello {user?.displayName} ! these are your customers.</h3>
-			</div>
+			<Avatar className="avatar" alt={user?.displayName} src={user?.photoURL} />
+			<h5>
+				
+				hello <b>{user?.displayName}</b>
+			</h5>
 		</div>
 	);
 }

@@ -15,38 +15,39 @@ function Body() {
 				</span>
 			</div>
 			<br></br>
-			<table>
-				<tr>
-					<th>No.</th>
-					<th>Name</th>
-					<th>Qty.</th>
-					<th>Rate</th>
-					<th>Amt.</th>
-				</tr>
-				<tr>
-					<td>01</td> <td>Goodday</td> <td>22</td> <td>20</td> <td>440</td>
-				</tr>
-				<tr>
-					<td>02</td> <td>50x50</td> <td>20</td> <td>25</td> <td>500</td>
-				</tr>
-				<tr>
-					<td>03</td> <td>20x20</td> <td>27</td> <td>20</td> <td>540</td>
-				</tr>
-				<tr>
-					<td>04</td> <td>Arrowroot</td> <td>23</td> <td>25</td> <td>575</td>
-				</tr>
-				<tr>
-					<td>05</td> <td>crackjack</td> <td>22</td> <td>20</td> <td>440</td>
-				</tr>
-				<tr>
-					<td>06</td> <td>cuttee</td> <td>22</td> <td>17</td> <td>374</td>
-				</tr>
-				<br></br>
-				<tr>
-					<th colspan="2">total Quantity : 8</th>
-
-					<th colspan="3">Amount : 15000/-</th>
-				</tr>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th scope="col">No.</th>
+						<th scope="col">Item</th>
+						<th scope="col">Quantity</th>
+						<th scope="col">Price</th>
+						<th scope="col">total</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td>Mark</td>
+						<td>Otto</td>
+						<td>@mdo</td>
+						<td>@mdo</td>
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td>Jacob</td>
+						<td>Thornton</td>
+						<td>@fat</td>
+						<td>@fat</td>
+					</tr>
+					<tr>
+						<th scope="row">3</th>
+						<td>Larry</td>
+						<td>the Bird</td>
+						<td>@twitter</td>
+						<td>@twitter</td>
+					</tr>
+				</tbody>
 			</table>
 		</div>
 	);
