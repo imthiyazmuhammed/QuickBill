@@ -16,7 +16,7 @@ export const AddProduct = () => {
 				Name: productName,
 				Price: productPrice,
 				Category: productCategory,
-				Quantity: prductQuantity,
+				Quantity: productQuantity,
 			})
 			.then(() => {
 				setProductName('');

@@ -1,7 +1,5 @@
-.card {
-	height: 100%;
-}
-.row {
-	display: grid;
-	grid-template-columns: subgrid;
+.retailer {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px;
 }
