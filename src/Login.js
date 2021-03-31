@@ -44,7 +44,7 @@ function Login() {
 					alt="image not available"
 				/>
 				<h3>Sign-In to QuickBilll</h3>
-				<Button className="btn" onClick={signIn}>
+				<Button variant="outlined" color="primary" onClick={signIn}>
 					Sign-In with Google
 				</Button>
 			</div>

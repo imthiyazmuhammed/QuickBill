@@ -5,14 +5,7 @@ function Body() {
 	return (
 		<div className="Body">
 			<div className="customer">
-				<span>
-					<h5>Bill to : </h5>
-					<h6>Mubashir</h6>
-				</span>
-				<span>
-					<h5>Credit : </h5>
-					<h6>2906/-</h6>
-				</span>
+				<h3>Development In Progress 👨🏽‍💻</h3>
 			</div>
 			<br></br>
 			<table class="table table-striped">

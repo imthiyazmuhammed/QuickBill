@@ -7,8 +7,8 @@ function Header() {
 		<div className="Header">
 			<nav class="navbar navbar-expand-lg navbar-light bg-light">
 				<div class="container-fluid">
-					<Link to="/">
-						<h3>💸 QuickBill</h3>
+					<Link to="/" style={{ textDecoration: 'none' }}>
+						<h3 className="h3">💸 QuickBill</h3>
 					</Link>
 
 					<form class="d-flex">
@@ -19,7 +19,7 @@ function Header() {
 							aria-label="Search"
 						/>
 						<button class="btn btn-outline-success" type="submit">
-							Search
+							🔎
 						</button>
 					</form>
 				</div>
