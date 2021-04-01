@@ -21,33 +21,21 @@ function Login() {
 				alert(error.message);
 			});
 	};
-	/* const [state, dispatch] = useStateValue();
-	const signIn = () => {
-		auth
-			.signInWithPopup(provider)
-			.then((result) => {
-				dispatch({
-					type: actionTypes.SET_USER,
-					user: result.user,
-				});
-			})
-			.catch((error) => {
-				alert(error.messsage);
-			});
-	}; */
 
 	return (
-		<div className="Login">
-			<div className="login__container">
-				<img
-					src="https://image.freepik.com/free-vector/vector-receipt-icon_8276-195.jpg"
-					alt="image not available"
-				/>
-				<h3>Sign-In to QuickBilll</h3>
-				<Button variant="outlined" color="primary" onClick={signIn}>
-					Sign-In with Google
-				</Button>
+		<div className="login-wrap">
+			<img
+				src="https://img.icons8.com/nolan/96/paid-bill.png"
+				alt="image not available"
+			/>
+			<div id="crd-title">
+				<h3>QuickBilll</h3>
 			</div>
+
+			<Button variant="outlined" color="primary" onClick={signIn}>
+				Sign-In with Google
+			</Button>
+			<h6>Billing made Quicker with ❤</h6>
 		</div>
 	);
 }
