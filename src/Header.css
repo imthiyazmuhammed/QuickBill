@@ -1,15 +1,49 @@
-.form-control {
-	padding: 10px;
-	margin-left: 20px !important;
-	width: 100%;
+.Header {
+	display: flex;
+	height: 50px;
+	align-items: center;
+	top: 0;
+	z-index: 100;
 }
-.d-flex {
+.header__search {
 	display: flex;
 	flex: 1;
 	align-items: center;
+	border-radius: 24px;
 }
-.h3 {
-	margin-top: 10px;
-	text-decoration: none !important;
-	color: black;
+.header__searchinput {
+	height: 15px;
+	padding: 1px;
+	border: none;
+	width: 100%;
+}
+.form-control1 {
+	border: none !important;
+}
+.dropdown {
+	position: absolute;
+	top: 40px;
+	width: auto;
+	border-radius: 2px;
+	padding: 1rem;
+	color: black !important;
+	overflow: hidden;
+}
+.menu-item {
+	height: 10px;
+	display: flex;
+	align-items: center;
+	background-color: black !important;
+	color: black !important;
+	border-radius: 2px;
+}
+.list-group-item {
+	color: black !important;
+	margin: 1px !important;
+	padding: 15px !important;
+}
+h6{
+	color: black !important;
+	padding: 0 !important;
+	margin: 0 !important;
 }

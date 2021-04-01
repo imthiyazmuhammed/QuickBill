@@ -10,7 +10,6 @@ function Customer() {
 		<div className="customer">
 			<Avatar className="avatar" alt={user?.displayName} src={user?.photoURL} />
 			<h5>
-				
 				hello <b>{user?.displayName}</b>
 			</h5>
 		</div>

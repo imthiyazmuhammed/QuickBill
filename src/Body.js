@@ -1,5 +1,6 @@
 import React from 'react';
 import './Body.css';
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 function Body() {
 	return (
