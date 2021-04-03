@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,6 +12,7 @@ import { useStateValue } from './StateProvider';
 
 function App() {
 	const [{ user }, dispatch] = useStateValue();
+	const [data, setData] = useState([]);//calling data from header to body
 	return (
 		<Router>
 			<div className="App">
@@ -33,8 +34,8 @@ function App() {
 								<Customer />
 							</Route>
 							<Route path="/">
-								<Header />
-								<Body />
+								<Header setData={setData} />
+								<Body data={data} />
 								<Footer />
 							</Route>
 						</Switch>

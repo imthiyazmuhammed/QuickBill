@@ -1,11 +1,17 @@
 .form-control,
 .AddProduct,
-.form {
+input .form {
 	margin: 5px;
+	margin-left: 5px !important;
+	width: 98% !important;
+	align-items: center;
 }
 h4 {
 	text-align: center;
 }
 button {
 	text-align: center;
+}
+.form {
+	margin-left: 15px !important;
 }

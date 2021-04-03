@@ -4,12 +4,15 @@ import './Header.css';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import db from './Firebase';
+import AddIcon from '@material-ui/icons/Add';
+import RemoveIcon from '@material-ui/icons/Remove';
 
-function Header() {
-	const [inputItems, setInputItems] = useState([]);
-	const [prods, setProds] = useState([]);
-	const [singleProd, setSingleProd] = useState('');
+function Header({ setData }) {
+	const [inputItems, setInputItems] = useState([]);//input value
+	const [prods, setProds] = useState([]);//accessing from database
+	const [singleProd, setSingleProd] = useState([{}]);//getting the clicked product
 	const [products, setProducts] = useState([]);
+	setData(singleProd);
 	useEffect(() => {
 		fetch(
 			db.collection('users').onSnapshot((snapshot) =>
@@ -24,7 +27,6 @@ function Header() {
 				)
 			)
 		);
-		console.log(prods);
 	}, []);
 
 	const {
@@ -44,6 +46,7 @@ function Header() {
 			);
 		},
 	});
+
 	return (
 		<div className="Header">
 			<Link to="/" style={{ textDecoration: 'none' }}>
@@ -54,7 +57,7 @@ function Header() {
 				<form class="form-control form-control1" {...getComboboxProps}>
 					<input
 						class="header__searchInput form-control"
-						placeholder="Search"
+						placeholder="Search Products"
 						{...getInputProps()}></input>
 					<div class="dropdown">
 						<ul {...getMenuProps()} class="list">
@@ -63,9 +66,22 @@ function Header() {
 									<span
 										key={item.id}
 										{...getItemProps({ item, index })}
-										onClick={() => setSingleProd(item.Name)}>
+										onClick={() =>
+											setSingleProd({
+												Name: item.Name,
+												Category: item.Category,
+												Price: item.Price,
+												Quantity: item.Quantity,
+											})
+										}>
 										<li class="list-group-item list-group-item-light">
 											<h6>{item.Name}</h6>
+
+											<span>
+												<RemoveIcon />
+												{1}
+												<AddIcon />
+											</span>
 										</li>
 									</span>
 								))}
@@ -76,7 +92,9 @@ function Header() {
 		</div>
 	);
 }
+
 export default Header;
+
 /* useEffect(() => {
 	db.collection('users').onSnapshot((snapshot) =>
 		setProds(

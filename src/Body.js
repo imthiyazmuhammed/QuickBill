@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Body.css';
+import { useStateValue } from './StateProvider';
 //import 'bootstrap/dist/css/bootstrap.min.css';
-
-function Body() {
+function Body({ data }) {
 	return (
 		<div className="Body">
 			<div className="customer">
@@ -16,30 +16,17 @@ function Body() {
 						<th scope="col">Item</th>
 						<th scope="col">Quantity</th>
 						<th scope="col">Price</th>
-						<th scope="col">total</th>
+						<th scope="col">Category</th>
 					</tr>
 				</thead>
+
 				<tbody>
 					<tr>
-						<th scope="row">1</th>
-						<td>Mark</td>
-						<td>Otto</td>
-						<td>@mdo</td>
-						<td>@mdo</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td>Jacob</td>
-						<td>Thornton</td>
-						<td>@fat</td>
-						<td>@fat</td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td>Larry</td>
-						<td>the Bird</td>
-						<td>@twitter</td>
-						<td>@twitter</td>
+						<td scope="col">{1}</td>
+						<td scope="col">{data.Name}</td>
+						<td scope="col">{data.Quantity}</td>
+						<td scope="col">{data.Price}</td>
+						<td scope="col">{data.Category}</td>
 					</tr>
 				</tbody>
 			</table>

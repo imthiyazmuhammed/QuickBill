@@ -5,29 +5,33 @@
 	top: 0;
 	z-index: 100;
 }
+.h3 {
+	margin-left: 1rem !important;
+	margin-right: 1rem !important;
+}
 .header__search {
 	display: flex;
 	flex: 1;
 	align-items: center;
-	border-radius: 24px;
 }
-.header__searchinput {
+.header__searchInput {
 	height: 15px;
-	padding: 1px;
 	border: none;
-	width: 100%;
+	width: 95%;
+	margin-top: 5px !important;
 }
 .form-control1 {
 	border: none !important;
 }
+
 .dropdown {
-	position: absolute;
-	top: 40px;
-	width: auto;
+ 	position: inherit !important;
+	align-items: center;
+	width: 98% !important;
 	border-radius: 2px;
-	padding: 1rem;
 	color: black !important;
-	overflow: hidden;
+	height: 20rem !important;
+	overflow: auto !important;
 }
 .menu-item {
 	height: 10px;
@@ -39,10 +43,11 @@
 }
 .list-group-item {
 	color: black !important;
-	margin: 1px !important;
 	padding: 15px !important;
+	display: flex !important;
+	justify-content: space-between !important;
 }
-h6{
+h6 {
 	color: black !important;
 	padding: 0 !important;
 	margin: 0 !important;

@@ -1,6 +1,7 @@
 .customer {
 	display: flex;
 	justify-content: left;
+	margin: 20px 20px;
 }
 .retailer,
 h5 {

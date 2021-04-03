@@ -1,18 +1,15 @@
-.Product {
-	justify-content: space-between;
-	display: inline;
-	margin-top: 5px;
-	text-decoration: none;
+.Product > h5 {
+	margin: 20px;
 }
-h5 {
-}
+
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
 }
-
-
+.add > h5 {
+	margin: 2rem !important;
+}
 
 .main {
 	max-width: 1200px;

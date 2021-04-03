@@ -19,15 +19,14 @@ h3 {
 	text-align: center;
 	font-weight: 200;
 	font-size: 2em;
-
 	margin: 2rem;
-	color: #34495e;
+	color: black;
 }
 
-h6 {
-	margin-top: 2rem;
+.login-wrap > h6 {
+	margin-top: 50px !important;
 	padding-bottom: 2px;
-	color: grey;
+	color: grey !important;
 }
 
 .login-wrap > Button {
