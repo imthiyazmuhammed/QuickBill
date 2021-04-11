@@ -1,4 +1,5 @@
 export const initialState = {
+	basket: [],
 	user: 'null',
 };
 
@@ -7,8 +8,13 @@ export const actionTypes = {
 };
 
 const reducer = (state, action) => {
-	//	console.log(action);
+	
 	switch (action.type) {
+		case 'addToBasket':
+			return {
+				...state,
+				basket: [action.item, ...state.basket],
+			};
 		case actionTypes.SET_USER:
 			return {
 				...state,

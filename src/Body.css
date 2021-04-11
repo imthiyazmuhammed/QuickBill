@@ -3,10 +3,12 @@ th,
 td {
 	border: 2px solid #6ca189;
 }
-table {
+.table {
 	text-align: center;
 	border-collapse: collapse;
+	table-layout: auto !important;
 	width: 100%;
+	margin-bottom: 5rem !important;
 }
 .Body {
 	padding: 5px;
@@ -16,6 +18,6 @@ table {
 	display: flex;
 	justify-content: center;
 }
-h3{
-text-align: center;
+h3 {
+	text-align: center;
 }

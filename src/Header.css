@@ -15,7 +15,7 @@
 	align-items: center;
 }
 .header__searchInput {
-	height: 15px;
+	height: 40px !important;
 	border: none;
 	width: 95%;
 	margin-top: 5px !important;

@@ -12,7 +12,6 @@ import { useStateValue } from './StateProvider';
 
 function App() {
 	const [{ user }, dispatch] = useStateValue();
-	const [data, setData] = useState([]);//calling data from header to body
 	return (
 		<Router>
 			<div className="App">
@@ -34,8 +33,8 @@ function App() {
 								<Customer />
 							</Route>
 							<Route path="/">
-								<Header setData={setData} />
-								<Body data={data} />
+								<Header />
+								<Body />
 								<Footer />
 							</Route>
 						</Switch>

@@ -24,16 +24,18 @@ function Login() {
 	};
 
 	return (
-		<div className="login-wrap">
-			<img src={logo} alt="image not available" />
-			<div id="crd-title">
-				<h3>QuickBilll</h3>
-			</div>
+		<div className="login">
+			<div className="login-wrap">
+				<img src={logo} alt="image not available" />
+				<div id="crd-title">
+					<h3>QuickBilll</h3>
+				</div>
 
-			<Button variant="outlined" color="primary" onClick={signIn}>
-				Sign-In with Google
-			</Button>
-			<h6>Billing made Quicker with ❤</h6>
+				<Button variant="outlined" color="primary" onClick={signIn}>
+					Sign-In with Google
+				</Button>
+				<h6>Billing made Quicker with ❤</h6>
+			</div>
 		</div>
 	);
 }

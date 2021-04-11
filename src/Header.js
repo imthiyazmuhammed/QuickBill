@@ -6,13 +6,14 @@ import { Link } from 'react-router-dom';
 import db from './Firebase';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import { useStateValue } from './StateProvider';
 
-function Header({ setData }) {
-	const [inputItems, setInputItems] = useState([]);//input value
-	const [prods, setProds] = useState([]);//accessing from database
-	const [singleProd, setSingleProd] = useState([{}]);//getting the clicked product
-	const [products, setProducts] = useState([]);
-	setData(singleProd);
+function Header({}) {
+	const [inputItems, setInputItems] = useState([]); //input value
+	const [prods, setProds] = useState([]); //accessing from database
+	const [singleProd, setSingleProd] = useState([]); //getting the clicked product
+	const [{ basket }, dispatch] = useStateValue([]);
+
 	useEffect(() => {
 		fetch(
 			db.collection('users').onSnapshot((snapshot) =>
@@ -28,13 +29,17 @@ function Header({ setData }) {
 			)
 		);
 	}, []);
-
+	useEffect(() => {
+		addToBasket();
+		//console.log(basket);
+		return () => {};
+	}, [singleProd]);
+	//console.log(basket);
 	const {
 		isOpen,
 		getMenuProps,
 		getInputProps,
 		getComboboxProps,
-		highlightedIndex,
 		getItemProps,
 	} = useCombobox({
 		items: inputItems,
@@ -46,11 +51,22 @@ function Header({ setData }) {
 			);
 		},
 	});
+	const addToBasket = () => {
+		dispatch({
+			type: 'addToBasket',
+			item: {
+				Name: singleProd.Name,
+				Price: singleProd.Price,
+				Category: singleProd.Category,
+				Quantity: singleProd.Quantity,
+			},
+		});
+	};
 
 	return (
 		<div className="Header">
 			<Link to="/" style={{ textDecoration: 'none' }}>
-				<h3 className="h3"> QuickBill</h3>
+				<h3 className="h3">QuickBill</h3>
 			</Link>
 
 			<div className="header__search">
@@ -58,28 +74,44 @@ function Header({ setData }) {
 					<input
 						class="header__searchInput form-control"
 						placeholder="Search Products"
-						{...getInputProps()}></input>
+						{...getInputProps()}
+						href=""></input>
 					<div class="dropdown">
 						<ul {...getMenuProps()} class="list">
 							{isOpen &&
 								inputItems.map((item, index) => (
 									<span
-										key={item.id}
 										{...getItemProps({ item, index })}
-										onClick={() =>
+										onClick={() => {
 											setSingleProd({
 												Name: item.Name,
 												Category: item.Category,
 												Price: item.Price,
 												Quantity: item.Quantity,
-											})
-										}>
-										<li class="list-group-item list-group-item-light">
+											});
+										}}>
+										<li
+											class="list-group-item list-group-item-light"
+											/* 	onClick={() => {
+												const addToBasket = () => {
+													dispatch({
+														type: 'addToBasket',
+														item: {
+															Name: item.Name,
+															Price: item.Price,
+															Category: item.Category,
+															Quantity: item.Quantity,
+														},
+													});
+												};
+												console.log(item.Name);
+											}} */
+										>
 											<h6>{item.Name}</h6>
 
 											<span>
 												<RemoveIcon />
-												{1}
+
 												<AddIcon />
 											</span>
 										</li>
