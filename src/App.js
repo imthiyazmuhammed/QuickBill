@@ -5,6 +5,7 @@ import Footer from './Footer';
 import Body from './Body';
 import Products from './Products';
 import Customer from './Customer';
+import Pdf from './Pdf';
 import AddProduct from './AddProduct';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './Login';
@@ -31,6 +32,10 @@ function App() {
 							<Route path="/customer">
 								<Header />
 								<Customer />
+							</Route>
+							<Route path="/Pdf">
+								<Header />
+								<Pdf />
 							</Route>
 							<Route path="/">
 								<Header />

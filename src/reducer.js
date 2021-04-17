@@ -8,12 +8,11 @@ export const actionTypes = {
 };
 
 const reducer = (state, action) => {
-	
 	switch (action.type) {
 		case 'addToBasket':
 			return {
 				...state,
-				basket: [action.item, ...state.basket],
+				basket: [...state.basket,action.item],
 			};
 		case actionTypes.SET_USER:
 			return {

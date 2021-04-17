@@ -4,10 +4,11 @@ import { useStateValue } from './StateProvider';
 //import 'bootstrap/dist/css/bootstrap.min.css';
 function Body() {
 	const [{ basket }, dispatch] = useStateValue();
-	const [count, setCount] = useState(-1);
+	const [count, setCount] = useState();
+
 	useEffect(() => {
 		setCount((count) => count + 1);
-	}, []);
+	}, [basket]);
 	return (
 		<div className="Body">
 			<div className="customer">
@@ -26,7 +27,7 @@ function Body() {
 				</thead>
 
 				<tbody>
-					{basket.map((item) => (
+					{basket.map((item, count) => (
 						<tr>
 							<td scope="col">{count}</td>
 							<td scope="col">{item.Name}</td>

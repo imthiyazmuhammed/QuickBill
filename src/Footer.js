@@ -14,7 +14,9 @@ function Footer() {
 			<Link to="/Products">
 				<ListIcon className="Account" />
 			</Link>
-			<GetAppIcon className="Account" />
+			<Link to="/Pdf">
+				<GetAppIcon className="Account" />
+			</Link>
 		</div>
 	);
 }
