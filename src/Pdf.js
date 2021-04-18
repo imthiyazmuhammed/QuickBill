@@ -1,3 +1,4 @@
+import { CenterFocusStrong } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
 import Pdf from 'react-to-pdf';
 import Body from './Body';
@@ -13,30 +14,36 @@ function Pdf1() {
 		unit: 'cm',
 		format: 'a4',
 		floatPrecision: 16,
+		width: 750,
 	};
 	useEffect(() => {
 		setCount((count) => count + 1);
 	}, [basket]);
 	return (
 		<div className="Pdf1">
-			<Pdf targetRef={ref} filename="Invoice.pdf" options={options} x={0.4}>
+			<Pdf
+				targetRef={ref}
+				filename="Invoice.pdf"
+				options={options}
+				x={0.4}
+				style={{}}>
 				{({ toPdf }) => (
 					<button class="btn btn-primary" onClick={toPdf}>
 						Create Invoice
 					</button>
 				)}
 			</Pdf>
-			<div style={{ width: 770 }} ref={ref}>
+			<div className="ref" style={{ width: 770 }} ref={ref}>
 				<div className="bill">
 					<ul>
-						<h5>Seller</h5>
+					<h>Seller : </h>
 						<li>LBS model Degree College</li>
 						<li>NCC Road parappanagadi</li>
 						<li>673301</li>
 						<li>+91 80898 66696</li>
 					</ul>
 					<ul>
-						<h5>Customer</h5>
+					<h>Customer : </h>
 						<li>dr rameshan p</li>
 						<li>principal ,lbs</li>
 						<li>parappanangadi</li>

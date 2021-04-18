@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './AddProduct.css';
 import db from './Firebase';
+import { auth } from './Firebase';
 
 export const AddProduct = () => {
 	const [productName, setProductName] = useState('');
@@ -8,10 +9,13 @@ export const AddProduct = () => {
 	const [productCategory, setProductCategory] = useState(null);
 	const [productQuantity, setProductQuantity] = useState(null);
 	const [error, setError] = useState('');
+	const id = auth.currentUser.uid;
+
 	const addProduct = (e) => {
 		e.preventDefault();
-		//console.log(productName, productPrice, productCategory, productQuantity);
 		db.collection('users')
+			.doc(id)
+			.collection('products')
 			.add({
 				Name: productName,
 				Price: productPrice,

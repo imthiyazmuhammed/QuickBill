@@ -1,7 +1,7 @@
 .table {
 	text-align: center;
 	border-collapse: collapse;
-	table-layout: unset !important;
+	table-layout: fixed !important;
 	width: 100%;
 	margin-bottom: 5rem !important;
 }
@@ -15,11 +15,19 @@ h1 {
 	text-align: center;
 	margin: 20px;
 }
-li{
-    list-style: none;
+li {
+	list-style: none;
 }
-.bill{
-    display: flex;
-    justify-content: space-between;
-    margin: 30px;
+ul {
+	margin: 30px;
+}
+.bill {
+	display: flex;
+	justify-content: space-between;
+	margin: 30px;
+}
+.ref {
+	display: grid;
+	width: auto;
+	justify-content: space-evenly;
 }

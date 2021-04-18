@@ -1,13 +1,24 @@
 .customer {
 	display: flex;
-	justify-content: left;
-	margin: 20px 20px;
-}
-.retailer,
-h5 {
-	padding: 15px;
+	justify-content: space-around;
+	margin-top: 30px;
 }
 
+h5 {
+	display: flex;
+	flex-direction: row;
+}
+.h5 {
+	margin-top: 15px;
+}
 .avatar {
 	margin: 10px;
+}
+.shop {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+.shop1 {
+	margin-top: 15px !important;
 }

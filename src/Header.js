@@ -6,27 +6,32 @@ import { Link } from 'react-router-dom';
 import db from './Firebase';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import { auth, provider } from './Firebase';
 import { useStateValue } from './StateProvider';
 
-function Header({}) {
+function Header() {
 	const [inputItems, setInputItems] = useState([]); //input value
 	const [prods, setProds] = useState([]); //accessing from database
 	const [singleProd, setSingleProd] = useState([]); //getting the clicked product
 	const [{ basket }, dispatch] = useStateValue([]);
+	const id = auth.currentUser?.uid;
 
 	useEffect(() => {
 		fetch(
-			db.collection('users').onSnapshot((snapshot) =>
-				setProds(
-					snapshot.docs.map((doc) => ({
-						id: doc.id,
-						Name: doc.data().Name,
-						Category: doc.data().Category,
-						Price: doc.data().Price,
-						Quantity: doc.data().Quantity,
-					}))
+			db
+				.collection('users')
+				.doc(id)
+				.collection('products')
+				.onSnapshot((snapshot) =>
+					setProds(
+						snapshot.docs.map((doc) => ({
+							Name: doc.data().Name,
+							Category: doc.data().Category,
+							Price: doc.data().Price,
+							Quantity: doc.data().Quantity,
+						}))
+					)
 				)
-			)
 		);
 	}, []);
 	useEffect(() => {

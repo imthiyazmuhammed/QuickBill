@@ -3,23 +3,27 @@ import React, { useEffect, useState } from 'react';
 import './Product.css';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import db from './Firebase';
+import { auth } from './Firebase';
 
 function Products() {
 	const [products, setProducts] = useState([]);
-
+	const id = auth.currentUser.uid;
 	useEffect(() => {
 		//run code when products component loads
-		db.collection('users').onSnapshot((snapshot) =>
-			setProducts(
-				snapshot.docs.map((doc) => ({
-					id: doc.id,
-					Name: doc.data().Name,
-					Category: doc.data().Category,
-					Price: doc.data().Price,
-					Quantity: doc.data().Quantity,
-				}))
-			)
-		);
+		db.collection('users')
+			.doc(id)
+			.collection('products')
+			.onSnapshot((snapshot) =>
+				setProducts(
+					snapshot.docs.map((doc) => ({
+						id: doc.id,
+						Name: doc.data().Name,
+						Category: doc.data().Category,
+						Price: doc.data().Price,
+						Quantity: doc.data().Quantity,
+					}))
+				)
+			);
 	}, []);
 	return (
 		<div className="Products">

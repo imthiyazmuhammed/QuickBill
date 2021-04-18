@@ -1,6 +1,6 @@
 export const initialState = {
 	basket: [],
-	user: 'null',
+	user: null,
 };
 
 export const actionTypes = {
@@ -12,8 +12,9 @@ const reducer = (state, action) => {
 		case 'addToBasket':
 			return {
 				...state,
-				basket: [...state.basket,action.item],
+				basket: [...state.basket, action.item],
 			};
+
 		case actionTypes.SET_USER:
 			return {
 				...state,

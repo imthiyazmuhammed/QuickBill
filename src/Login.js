@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.css';
 import { Button } from '@material-ui/core';
 import { auth, provider } from './Firebase';
@@ -8,11 +8,12 @@ import logo from './icons/Untitled-1.png';
 
 function Login() {
 	const [state, dispatch] = useStateValue();
+	
 	const signIn = (e) => {
 		auth
 			.signInWithPopup(provider)
 			.then((result) => {
-				console.log(result);
+			
 				dispatch({
 					type: actionTypes.SET_USER,
 					user: result.user,

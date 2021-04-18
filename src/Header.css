@@ -25,12 +25,11 @@
 }
 
 .dropdown {
- 	position: inherit !important;
+	position: inherit !important;
 	align-items: center;
 	width: 98% !important;
 	border-radius: 2px;
 	color: black !important;
-	height: 20rem !important;
 	overflow: auto !important;
 }
 .menu-item {
