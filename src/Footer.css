@@ -1,13 +1,8 @@
-.Footer {
+.footer {
 	display: flex;
-
 	justify-content: space-around;
-	padding: 10px;
-	background-color: #e1d6e6;
-	bottom: 0 !important;
+	padding: 1em;
+	bottom: 0;
 	position: fixed;
 	width: 100%;
-}
-.Account {
-	font-size: 5vh;
 }

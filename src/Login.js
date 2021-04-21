@@ -8,12 +8,11 @@ import logo from './icons/Untitled-1.png';
 
 function Login() {
 	const [state, dispatch] = useStateValue();
-	
+
 	const signIn = (e) => {
 		auth
 			.signInWithPopup(provider)
 			.then((result) => {
-			
 				dispatch({
 					type: actionTypes.SET_USER,
 					user: result.user,
@@ -26,17 +25,14 @@ function Login() {
 
 	return (
 		<div className="login">
-			<div className="login-wrap">
-				<img src={logo} alt="image not available" />
-				<div id="crd-title">
-					<h3>QuickBilll</h3>
-				</div>
-
-				<Button variant="outlined" color="primary" onClick={signIn}>
+			
+				<img src={logo} alt="Image not available" />
+				<h3>QuickBill</h3>
+				<button type="button" class="btn btn-dark" onClick={signIn}>
 					Sign-In with Google
-				</Button>
+				</button>
 				<h6>Billing made Quicker with ❤</h6>
-			</div>
+			
 		</div>
 	);
 }

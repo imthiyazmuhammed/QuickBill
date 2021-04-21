@@ -7,7 +7,7 @@ import { auth } from './Firebase';
 
 function Products() {
 	const [products, setProducts] = useState([]);
-	const id = auth.currentUser.uid;
+	const id = auth.currentUser?.uid;
 	useEffect(() => {
 		//run code when products component loads
 		db.collection('users')
@@ -16,7 +16,6 @@ function Products() {
 			.onSnapshot((snapshot) =>
 				setProducts(
 					snapshot.docs.map((doc) => ({
-						id: doc.id,
 						Name: doc.data().Name,
 						Category: doc.data().Category,
 						Price: doc.data().Price,
@@ -26,31 +25,27 @@ function Products() {
 			);
 	}, []);
 	return (
-		<div className="Products">
-			<div className="add">
-				<Link to="/AddProduct" style={{ textDecoration: 'none' }}>
-					<span class="Product">
-						<h5>
-							<AddCircleIcon fontSize="medium" />
-							&nbsp; Add new product
-						</h5>
-					</span>
+		<div className="products">
+			<div className="products__add">
+				<Link to="/AddProduct">
+					<h5 style={{ 'text-decoration': 'none' }}>
+						<AddCircleIcon fontSize="medium" />
+						&nbsp; Add new product
+					</h5>
 				</Link>
 			</div>
-			<div class="main">
-				<ul class="cards">
+			<div className="products__list">
+				<ul className="product__cards">
 					{products.map((products) => (
-						<li class="cards_item">
-							<div class="card ">
-								<div class="card_content">
-									<h5 class="card_title">{products.Name}</h5>
-									<h6 class="card_text">Category : {products.Category}</h6>
-									<h6 class="card_text">Price : ₹ {products.Price}</h6>
-									<h6 class="card_text">Quantity : {products.Quantity}</h6>
-									{/* <a href="#" class="card_text">
+						<li class="cards__item">
+							<div class="card__content">
+								<h5 class="card__title">{products.Name}</h5>
+								<h6 class="card__text">Category : {products.Category}</h6>
+								<h6 class="card__text">Price : ₹ {products.Price}</h6>
+								<h6 class="card__text">Quantity : {products.Quantity}</h6>
+								{/* <a href="#" class="card_text">
 										⛔
 									</a> */}
-								</div>
 							</div>
 						</li>
 					))}

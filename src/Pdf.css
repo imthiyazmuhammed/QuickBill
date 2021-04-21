@@ -1,4 +1,30 @@
-.table {
+.pdf {
+	margin: 10px;
+}
+.pdf__ref {
+	display: grid;
+	width: auto;
+}
+.btn,
+h3 {
+	text-align: center;
+}
+.pdf__table {
+	text-align: center;
+	border-collapse: collapse;
+	table-layout: fixed ;
+	width: 100%;
+	margin-bottom: 5rem !important;
+}
+.pdf__bill {
+	display: flex;
+	justify-content: space-between;
+	margin: 30px;
+}
+li {
+	list-style: none;
+}
+/* .table {
 	text-align: center;
 	border-collapse: collapse;
 	table-layout: fixed !important;
@@ -15,9 +41,7 @@ h1 {
 	text-align: center;
 	margin: 20px;
 }
-li {
-	list-style: none;
-}
+
 ul {
 	margin: 30px;
 }
@@ -31,3 +55,4 @@ ul {
 	width: auto;
 	justify-content: space-evenly;
 }
+ */

@@ -1,37 +1,27 @@
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-}
-
-.login-wrap {
+.login {
 	position: relative;
-	margin: 6rem auto 8.1rem auto;
-	background: #ffffff;
-	width: 350px;
+	margin: 6rem auto 8rem auto;
+	width: 25em;
 	border-radius: 5px;
 	box-shadow: 3px 3px 10px rgb(199, 192, 192);
 	padding: 15px;
 	display: grid;
 	place-items: center;
 }
-h3 {
+.login > img {
+	object-fit: contain;
+	height: 130px;
+	margin-top: 10px;
 	text-align: center;
-	font-weight: 200;
-	font-size: 2em;
+}
+.login > h3 {
+	font-weight: 300;
+	font-size: 3em;
 	margin: 2rem;
 	color: black;
 }
-
-.login-wrap > h6 {
-	margin-top: 50px !important;
-	padding-bottom: 2px;
-	color: grey !important;
-}
-
-.login-wrap > Button {
-	border: 1px sol;
-	color: white;
+.login > Button {
+	color: white !important;
 	font-size: 18px;
 	font-weight: 200;
 	margin: 1.5rem;
@@ -39,9 +29,8 @@ h3 {
 	transition: box-shadow 0.4s ease;
 	text-transform: inherit !important;
 }
-.login-wrap > img {
-	object-fit: contain;
-	height: 130px;
-	margin-top: 10px;
-	text-align: center;
+.login > h6 {
+	margin-top: 50px !important;
+	padding-bottom: 2px;
+	color: grey !important;
 }

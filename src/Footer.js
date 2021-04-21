@@ -7,15 +7,15 @@ import './Footer.css';
 
 function Footer() {
 	return (
-		<div className="Footer">
+		<div className="footer">
 			<Link to="/Customer">
-				<AccountCircleIcon className="Account" />
+				<AccountCircleIcon className="footer__icon" />
 			</Link>
 			<Link to="/Products">
-				<ListIcon className="Account" />
+				<ListIcon className="footer__icon" />
 			</Link>
 			<Link to="/Pdf">
-				<GetAppIcon className="Account" />
+				<GetAppIcon className="footer__icon" />
 			</Link>
 		</div>
 	);

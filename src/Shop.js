@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import db from './Firebase';
 import { auth } from './Firebase';
-import './Shop.css'
+import './Shop.css';
 
 function Shop() {
 	const [shopName, setShopName] = useState('');
@@ -32,7 +32,7 @@ function Shop() {
 			.catch((err) => setError(err.message));
 	};
 	return (
-		<div className="Shop">
+		<div className="shop">
 			<h4>Add your shop details</h4>
 			<hr></hr>
 			<form
@@ -41,7 +41,7 @@ function Shop() {
 				classname="form-control"
 				onSubmit={shopData}>
 				<br></br>
-				<label className="form" htmlfor="shop_name">
+				<label className="shop__form" htmlfor="shop_name">
 					Shop Name
 				</label>
 				<br></br>
@@ -54,7 +54,7 @@ function Shop() {
 				/>
 				<br></br>
 
-				<label className="form" htmlfor="address">
+				<label className="shop__form" htmlfor="address">
 					Address
 				</label>
 				<br></br>
@@ -66,7 +66,7 @@ function Shop() {
 					value={address}
 				/>
 				<br></br>
-				<label className="form" htmlfor="pincode">
+				<label className="shop__form" htmlfor="pincode">
 					pincode
 				</label>
 				<br></br>
@@ -77,7 +77,7 @@ function Shop() {
 					value={pincode}
 				/>
 				<br></br>
-				<label className="form" htmlfor="phone number">
+				<label className="shop__form" htmlfor="phone number">
 					Phone Number
 				</label>
 				<br></br>
@@ -89,9 +89,7 @@ function Shop() {
 					value={phoneNumber}
 				/>
 				<br></br>
-				<div className="text-center">
-					<button className="btn btn-success btn-md ">Add</button>
-				</div>
+				<button className="btn btn-success btn-md ">Add</button>
 			</form>
 		</div>
 	);

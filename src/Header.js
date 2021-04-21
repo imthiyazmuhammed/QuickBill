@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useCombobox } from 'downshift';
 import './Header.css';
-//import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import db from './Firebase';
 import AddIcon from '@material-ui/icons/Add';
@@ -36,10 +35,7 @@ function Header() {
 	}, []);
 	useEffect(() => {
 		addToBasket();
-		//console.log(basket);
-		return () => {};
 	}, [singleProd]);
-	//console.log(basket);
 	const {
 		isOpen,
 		getMenuProps,
@@ -69,20 +65,21 @@ function Header() {
 	};
 
 	return (
-		<div className="Header">
-			<Link to="/" style={{ textDecoration: 'none' }}>
-				<h3 className="h3">QuickBill</h3>
-			</Link>
-
-			<div className="header__search">
-				<form class="form-control form-control1" {...getComboboxProps}>
+		<div className="header">
+			<div className="header__logo">
+				<Link to="/" style={{ 'text-decoration': 'none' }}>
+					<h3>QuickBill</h3>
+				</Link>
+			</div>
+			<div className="header__search ">
+				<form {...getComboboxProps}>
 					<input
-						class="header__searchInput form-control"
+						class="form-control container-fluid header__searchInput"
 						placeholder="Search Products"
 						{...getInputProps()}
 						href=""></input>
-					<div class="dropdown">
-						<ul {...getMenuProps()} class="list">
+					<div className="header__dropdown">
+						<ul {...getMenuProps()} class="header__searchlist">
 							{isOpen &&
 								inputItems.map((item, index) => (
 									<span
@@ -95,28 +92,10 @@ function Header() {
 												Quantity: item.Quantity,
 											});
 										}}>
-										<li
-											class="list-group-item list-group-item-light"
-											/* 	onClick={() => {
-												const addToBasket = () => {
-													dispatch({
-														type: 'addToBasket',
-														item: {
-															Name: item.Name,
-															Price: item.Price,
-															Category: item.Category,
-															Quantity: item.Quantity,
-														},
-													});
-												};
-												console.log(item.Name);
-											}} */
-										>
+										<li class="list-group-item">
 											<h6>{item.Name}</h6>
-
 											<span>
 												<RemoveIcon />
-
 												<AddIcon />
 											</span>
 										</li>
@@ -131,25 +110,3 @@ function Header() {
 }
 
 export default Header;
-
-/* useEffect(() => {
-	db.collection('users').onSnapshot((snapshot) =>
-		setProds(
-			snapshot.docs
-				.map((doc) => ({
-					id: doc.id,
-					Name: doc.data().Name,
-					Category: doc.data().Category,
-					Price: doc.data().Price,
-					Quantity: doc.data().Quantity,
-				}))
-		)
-	)
-
-}, []); */
-
-/* useEffect(() => {
-	fetch('https://jsonplaceholder.typicode.com/users')
-		.then((response) => response.json())
-		.then((data) => setProds(data));
-}, []); */

@@ -1,23 +1,18 @@
+.body {
+	padding: 0.5rem;
+	margin-top: 10px;
+}
+.body__heading {
+	text-align: center;
+}
+.body__table {
+	text-align: center;
+	width: 100%;
+	margin-bottom: 5rem;
+	table-layout: auto;
+}
 table,
 th,
 td {
-	border: 2px solid #6ca189;
-}
-.table {
-	text-align: center;
-	border-collapse: collapse;
-	table-layout: unset !important;
-	width: 100%;
-	margin-bottom: 5rem !important;
-}
-.Body {
-	padding: 5px;
-	margin-top: 10px;
-}
-.customer {
-	display: flex;
-	justify-content: center;
-}
-h3 {
-	text-align: center;
+	border: 1px dotted #6ca189;
 }
