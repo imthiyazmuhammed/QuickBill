@@ -1,18 +1,11 @@
 .pdf {
 	margin: 10px;
 }
-.pdf__ref {
-	display: grid;
-	width: auto;
-}
-.btn,
-h3 {
-	text-align: center;
-}
+
 .pdf__table {
 	text-align: center;
 	border-collapse: collapse;
-	table-layout: fixed ;
+	table-layout: fixed;
 	width: 100%;
 	margin-bottom: 5rem !important;
 }
@@ -23,6 +16,16 @@ h3 {
 }
 li {
 	list-style: none;
+}
+.bigblue {
+	color: DodgerBlue;
+	padding: 40px;
+	font-family: Arial;
+	text-align: center;
+}
+.btn {
+	margin: 10px;
+	align-items: center;
 }
 /* .table {
 	text-align: center;

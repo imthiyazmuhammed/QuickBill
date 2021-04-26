@@ -33,6 +33,7 @@ function Shop() {
 	};
 	return (
 		<div className="shop">
+			<br></br>
 			<h4>Add your shop details</h4>
 			<hr></hr>
 			<form
@@ -89,7 +90,9 @@ function Shop() {
 					value={phoneNumber}
 				/>
 				<br></br>
-				<button className="btn btn-success btn-md ">Add</button>
+				<div className="text-center">
+					<button className="btn btn-success btn-md ">Add</button>
+				</div>
 			</form>
 		</div>
 	);

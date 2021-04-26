@@ -9,7 +9,7 @@ export const AddProduct = () => {
 	const [productCategory, setProductCategory] = useState(null);
 	const [productQuantity, setProductQuantity] = useState(null);
 	const [error, setError] = useState('');
-	const id = auth.currentUser.uid;
+	const id = auth.currentUser?.uid;
 
 	const addProduct = (e) => {
 		e.preventDefault();

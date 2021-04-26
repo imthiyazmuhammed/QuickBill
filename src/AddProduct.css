@@ -1,18 +1,18 @@
-/* .form-control,
+.form-control,
 .AddProduct,
-input .form {
+input {
 	margin: 5px;
-	margin-left: 5px !important;
-	width: 98% !important;
+	width: 98%;
 	align-items: center;
+}
+.form {
+	margin-left: 15px;
 }
 h4 {
 	text-align: center;
 }
+
 button {
+	align-items: center;
 	text-align: center;
 }
-.form {
-	margin-left: 15px !important;
-}
- */

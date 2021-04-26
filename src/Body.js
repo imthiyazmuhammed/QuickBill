@@ -12,18 +12,14 @@ function Body() {
 			animationName: Radium.keyframes(bounce, 'bounce'),
 		},
 	};
+
 	useEffect(() => {
 		setCount((count) => count + 1);
 	}, [basket]);
 
 	return (
 		<div className="body">
-			<div className="body__heading">
-				<h3>Development In Progress 👨🏽‍💻</h3>
-			</div>
-			<br></br>
 			<StyleRoot>
-				{' '}
 				<table class="body__table table-striped">
 					<thead>
 						<tr>
@@ -35,9 +31,9 @@ function Body() {
 						</tr>
 					</thead>
 
-					<tbody style={styles.bounce}>
+					<tbody>
 						{basket.map((item, count) => (
-							<tr>
+							<tr style={styles.bounce}>
 								<td scope="col">{count}</td>
 								<td scope="col">{item.Name}</td>
 								<td scope="col">{item.Quantity}</td>
