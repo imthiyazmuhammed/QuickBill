@@ -25,17 +25,19 @@
 	align-items: center;
 	overflow: auto;
 	z-index: 100;
-	display: flex;
-	justify-content: space-between;
 }
 .header__searchlist {
 	display: grid;
-	height: 10rem;
+	height: 12rem;
 	color: black;
 	margin-left: -40px !important;
-	
 }
-.list-group-item {
+.list_group_item {
 	color: black;
-	
+	display: flex;
+	justify-content: space-between;
+	min-width: 10rem !important;
+	width: 98%;
+	padding: 5px;
+	background-color: white;
 }

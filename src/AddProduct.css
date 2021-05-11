@@ -16,3 +16,10 @@ button {
 	align-items: center;
 	text-align: center;
 }
+.rupee {
+	display: flex;
+	align-items: center;
+}
+.rupee > h5 {
+	margin-left: 15px;
+}

@@ -25,9 +25,10 @@ export const AddProduct = () => {
 			.then(() => {
 				setProductName('');
 				setProductPrice(0);
-				setProductQuantity('');
+				setProductQuantity();
 				setProductCategory('');
 				setError('');
+				alert('Product added succesfully');
 			})
 			.catch((err) => setError(err.message));
 	};
@@ -36,15 +37,9 @@ export const AddProduct = () => {
 			<br></br>
 			<h4>Add Product</h4>
 			<hr></hr>
-			<form
-				action=""
-				autoComplete="off"
-				classname="form-control"
-				onSubmit={addProduct}>
+			<form autoComplete="off" classname="form-control" onSubmit={addProduct}>
 				<br></br>
-				<label className="form" htmlfor="product_name">
-					Product Name
-				</label>
+				<label className="form">Product Name</label>
 				<br></br>
 				<input
 					type="text"
@@ -54,22 +49,20 @@ export const AddProduct = () => {
 					value={productName}
 				/>
 				<br></br>
-
-				<label className="form" htmlfor="product_price">
-					Product Price
-				</label>
+				<label className="form">Product Price</label>
 				<br></br>
-				<input
-					type="text"
-					className="form-control"
-					required
-					onChange={(e) => setProductPrice(e.target.value)}
-					value={productPrice}
-				/>
+				<span className="rupee">
+					<h5>₹</h5>
+					<input
+						type="number"
+						className="form-control"
+						required
+						onChange={(e) => setProductPrice(e.target.value)}
+						value={productPrice}
+					/>
+				</span>
 				<br></br>
-				<label className="form" htmlfor="product_category">
-					category
-				</label>
+				<label className="form">category</label>
 				<br></br>
 				<input
 					type="text"
@@ -78,12 +71,10 @@ export const AddProduct = () => {
 					value={productCategory}
 				/>
 				<br></br>
-				<label className="form" htmlfor="product_quantity">
-					Quantity
-				</label>
+				<label className="form">Quantity</label>
 				<br></br>
 				<input
-					type="text"
+					type="number"
 					className="form-control"
 					required
 					onChange={(e) => setProductQuantity(e.target.value)}

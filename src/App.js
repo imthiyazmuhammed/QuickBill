@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './App.css';
 import Header from './Header';
 import Footer from './Footer';
@@ -12,8 +12,10 @@ import Login from './Login';
 import { useStateValue } from './StateProvider';
 import Shop from './Shop';
 
+
 function App() {
 	const [{ user }, dispatch] = useStateValue();
+
 	return (
 		<Router>
 			<div className="App">

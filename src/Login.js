@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Button } from '@material-ui/core';
 import { auth, provider } from './Firebase';
 import { useStateValue } from './StateProvider';
 import { actionTypes } from './reducer';
@@ -25,14 +24,12 @@ function Login() {
 
 	return (
 		<div className="login">
-			
-				<img src={logo} alt="Image not available" />
-				<h3>QuickBill</h3>
-				<button type="button" class="btn btn-dark" onClick={signIn}>
-					Sign-In with Google
-				</button>
-				<h6>Billing made Quicker with ❤</h6>
-			
+			<img src={logo} alt="Image not available" />
+			<h3>QuickBill</h3>
+			<button type="button" class="btn btn-dark" onClick={signIn}>
+				Sign-In with Google
+			</button>
+			<h6>Billing made Quicker with ❤</h6>
 		</div>
 	);
 }

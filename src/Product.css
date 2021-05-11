@@ -20,7 +20,18 @@
 	padding: 0.5rem;
 	width: 50%;
 }
-
+.paper {
+	background-color: #ffffff !important;
+	border: 1px solid #000;
+	position: relative;
+	margin: 6rem auto 8rem auto;
+	width: 25em;
+	width: 98%;
+	height: 80%;
+	border-radius: 5px;
+	display: grid;
+	place-items: center;
+}
 @media (min-width: 40rem) {
 	.cards__item {
 		width: 50%;
@@ -33,7 +44,6 @@
 	}
 }
 .card__content {
-	background-color: white;
 	border-radius: 0.25rem;
 	box-shadow: 0 20px 40px -14px rgba(199, 189, 189, 0.25);
 	display: flex;
@@ -48,10 +58,11 @@
 	font-weight: 700;
 	text-transform: capitalize;
 	padding-bottom: 1rem;
+	display: flex;
+	justify-content: space-between;
 }
 .card__text {
 	color: black;
 	font-size: 1rem;
-	margin-left: 1rem !important;
 	font-weight: 400;
 }

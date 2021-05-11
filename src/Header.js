@@ -72,7 +72,7 @@ function Header() {
 				</Link>
 			</div>
 			<div className="header__search ">
-				<form {...getComboboxProps}>
+				<form {...getComboboxProps()}>
 					<input
 						class="form-control container-fluid header__searchInput"
 						placeholder="Search Products"
@@ -92,7 +92,7 @@ function Header() {
 												Quantity: item.Quantity,
 											});
 										}}>
-										<li class="list-group-item">
+										<li className="list_group_item">
 											<h6>{item.Name}</h6>
 											<span>
 												<RemoveIcon />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import db from './Firebase';
 import { auth } from './Firebase';
 import './Shop.css';
@@ -9,14 +9,16 @@ function Shop() {
 	const [pincode, setPincode] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState(null);
 	const [error, setError] = useState('');
-	const id = auth.currentUser?.uid;
 
+	const id = auth.currentUser?.uid; //unique user id
+	//adding the shop data
 	const shopData = (e) => {
 		e.preventDefault();
 		db.collection('users')
 			.doc(id)
 			.collection('shopData')
-			.add({
+			.doc('BSRYAPMMABH')
+			.set({
 				Name: shopName,
 				Address: address,
 				Pincode: pincode,
@@ -28,13 +30,15 @@ function Shop() {
 				setPincode('');
 				setPhoneNumber('');
 				setError('');
+				console.log(error);
 			})
 			.catch((err) => setError(err.message));
 	};
+
 	return (
 		<div className="shop">
 			<br></br>
-			<h4>Add your shop details</h4>
+			<h4>Update shop details</h4>
 			<hr></hr>
 			<form
 				action=""
@@ -42,10 +46,11 @@ function Shop() {
 				classname="form-control"
 				onSubmit={shopData}>
 				<br></br>
-				<label className="shop__form" htmlfor="shop_name">
+				<label className="shop__form" htmlFor="shop_name">
 					Shop Name
 				</label>
 				<br></br>
+
 				<input
 					type="text"
 					className="form-control"
@@ -55,7 +60,7 @@ function Shop() {
 				/>
 				<br></br>
 
-				<label className="shop__form" htmlfor="address">
+				<label className="shop__form" htmlFor="address">
 					Address
 				</label>
 				<br></br>
@@ -67,24 +72,28 @@ function Shop() {
 					value={address}
 				/>
 				<br></br>
-				<label className="shop__form" htmlfor="pincode">
+				<label className="shop__form" htmlFor="pincode">
 					pincode
 				</label>
 				<br></br>
 				<input
-					type="text"
+					type="number"
 					className="form-control"
+					maxlength="6"
+					minLength="6"
 					onChange={(e) => setPincode(e.target.value)}
 					value={pincode}
 				/>
 				<br></br>
-				<label className="shop__form" htmlfor="phone number">
+				<label className="shop__form" htmlFor="phone number">
 					Phone Number
 				</label>
 				<br></br>
 				<input
-					type="text"
+					type="number"
 					className="form-control"
+					maxlength="10"
+					minLength="10"
 					required
 					onChange={(e) => setPhoneNumber(e.target.value)}
 					value={phoneNumber}
