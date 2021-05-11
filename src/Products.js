@@ -4,7 +4,7 @@ import './Product.css';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import db from './Firebase';
 import { auth } from './Firebase';
-import { Modal } from '@material-ui/core';
+import { Button, Modal } from 'react-bootstrap';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 function Products() {
@@ -15,7 +15,9 @@ function Products() {
 	const [products, setProducts] = useState([]);
 	const id = auth.currentUser?.uid;
 	const prd = db.collection('users').doc(id).collection('products');
-	const [open, setOpen] = useState(false);
+	const [show, setShow] = useState(false);
+	const handleClose = () => setShow(false);
+	const handleShow = () => setShow(true);
 	const [error, setError] = useState('');
 	const [docId, setDocId] = useState('');
 	console.log(docId);
@@ -56,7 +58,6 @@ function Products() {
 			})
 			.catch((err) => setError(err.message));
 		console.log(error);
-		setOpen(false);
 	};
 
 	const onDelete = () => {
@@ -67,13 +68,14 @@ function Products() {
 	return (
 		<div className="products">
 			<Modal
-				className="paper"
-				open={open}
-				onClose={(e) => setOpen(false)}
-				aria-labelledby="simple-modal-title"
-				aria-describedby="simple-modal-description">
-				<div>
-					<h1>Edit Product</h1>
+				show={show}
+				onHide={handleClose}
+				backdrop="static"
+				keyboard={false}>
+				<Modal.Header closeButton>
+					<Modal.Title>Edit product</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
 					<form autoComplete="off" classname="form-control" onSubmit={onUpdate}>
 						<br></br>
 						<label className="form">Product Name</label>
@@ -117,14 +119,14 @@ function Products() {
 						/>
 						<br></br>
 						<div className="text-center">
-							<button
-								className="btn btn-success btn-md "
-								onClick={((e) => setOpen(false), onUpdate)}>
-								Edit
-							</button>
+							<Modal.Footer>
+								<button className="btn btn-success" onClick={handleClose}>
+									Edit
+								</button>
+							</Modal.Footer>
 						</div>
 					</form>
-				</div>
+				</Modal.Body>
 			</Modal>
 			<div className="products">
 				<div className="products__add">
@@ -144,7 +146,7 @@ function Products() {
 										{product.Name}
 										<div className="editDelete">
 											<a
-												onClick={(e) => setOpen(true)}
+												onClick={handleShow}
 												style={{ textDecoration: 'none' }}
 												class="card_text">
 												<EditIcon

@@ -20,7 +20,7 @@
 	padding: 0.5rem;
 	width: 50%;
 }
-.paper {
+/* .paper {
 	background-color: #ffffff !important;
 	border: 1px solid #000;
 	position: relative;
@@ -31,7 +31,7 @@
 	border-radius: 5px;
 	display: grid;
 	place-items: center;
-}
+} */
 @media (min-width: 40rem) {
 	.cards__item {
 		width: 50%;

@@ -10,7 +10,6 @@ import AddProduct from './AddProduct';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Login from './Login';
 import { useStateValue } from './StateProvider';
-import Shop from './Shop';
 
 
 function App() {
@@ -36,10 +35,7 @@ function App() {
 								<Header />
 								<Customer />
 							</Route>
-							<Route path="/shop">
-								<Header />
-								<Shop />
-							</Route>
+							
 							<Route path="/Pdf">
 								<Header />
 								<Pdf />
