@@ -17,11 +17,17 @@ td {
 	border: 1px dotted #6ca189;
 }
 .image {
-	height: 13rem;
+	height: 10rem;
 	margin-top: 2rem;
 	text-align: center;
 	align-items: center;
 }
-.image >h4{
+.image > h4 {
 	margin-top: 2rem;
+}
+.updates {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	margin-bottom: 50px;
 }

@@ -22,22 +22,23 @@
 }
 .header__dropdown {
 	position: absolute;
-	align-items: center;
+	width: auto;
+	min-width: 15rem !important;
+	float: left;
 	overflow: auto;
-	z-index: 100;
+	background-color: #fff;
 }
 .header__searchlist {
+	margin-left: -40px;
 	display: grid;
-	height: 12rem;
+	width: auto;
+	max-height: 15rem;
 	color: black;
-	margin-left: -40px !important;
 }
 .list_group_item {
 	color: black;
 	display: flex;
 	justify-content: space-between;
-	min-width: 10rem !important;
-	width: 98%;
-	padding: 5px;
-	background-color: white;
+	padding: 10px;
+	width: 100%;
 }

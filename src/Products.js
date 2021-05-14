@@ -4,12 +4,12 @@ import './Product.css';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import db from './Firebase';
 import { auth } from './Firebase';
-import { Button, Modal } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 function Products() {
 	const [productName, setProductName] = useState('');
-	const [productPrice, setProductPrice] = useState(0);
+	const [productPrice, setProductPrice] = useState();
 	const [productCategory, setProductCategory] = useState(null);
 	const [productQuantity, setProductQuantity] = useState(null);
 	const [products, setProducts] = useState([]);
@@ -19,8 +19,8 @@ function Products() {
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 	const [error, setError] = useState('');
-	const [docId, setDocId] = useState('');
-	console.log(docId);
+	const [doc, setDoc] = useState('');
+
 	useEffect(() => {
 		//run code when products component loads
 		prd.onSnapshot((snapshot) =>
@@ -39,7 +39,7 @@ function Products() {
 	const onUpdate = (e) => {
 		e.preventDefault();
 		prd
-			.doc(docId)
+			.doc(doc.Id)
 			.set(
 				{
 					Category: productCategory,
@@ -51,10 +51,10 @@ function Products() {
 			)
 			.then(() => {
 				setProductName('');
-				setProductPrice(0);
+				setProductPrice();
 				setProductQuantity();
 				setProductCategory('');
-				alert('Product edited succesfully');
+				alert('Product edited');
 			})
 			.catch((err) => setError(err.message));
 		console.log(error);
@@ -62,9 +62,11 @@ function Products() {
 
 	const onDelete = () => {
 		if (window.confirm('Are you sure to delete this product?')) {
-			prd.doc(docId).delete();
+			prd.doc(doc.Id).delete();
+			handleClose();
 		}
 	};
+
 	return (
 		<div className="products">
 			<Modal
@@ -84,7 +86,9 @@ function Products() {
 							type="text"
 							className="form-control"
 							onChange={(e) => setProductName(e.target.value)}
+							placeholder={doc.Name}
 							value={productName}
+							required
 						/>
 						<br></br>
 						<label className="form">Product Price</label>
@@ -95,7 +99,9 @@ function Products() {
 								type="number"
 								className="form-control"
 								onChange={(e) => setProductPrice(e.target.value)}
+								placeholder={doc.Price}
 								value={productPrice}
+								required
 							/>
 						</span>
 						<br></br>
@@ -105,7 +111,9 @@ function Products() {
 							type="text"
 							className="form-control"
 							onChange={(e) => setProductCategory(e.target.value)}
+							placeholder={doc.Category}
 							value={productCategory}
+							required
 						/>
 						<br></br>
 						<label className="form">Quantity</label>
@@ -115,19 +123,28 @@ function Products() {
 							className="form-control"
 							required
 							onChange={(e) => setProductQuantity(e.target.value)}
+							placeholder={doc.Quantity}
 							value={productQuantity}
+							required
 						/>
 						<br></br>
 						<div className="text-center">
-							<Modal.Footer>
-								<button className="btn btn-success" onClick={handleClose}>
-									Edit
-								</button>
+							<Modal.Footer class="mr-auto">
+								<div className="modal__footer">
+									<DeleteIcon
+										style={{ fontSize: 'default' }}
+										onClick={onDelete}
+									/>
+									<button className="btn btn-success" onClick={handleClose}>
+										Edit
+									</button>
+								</div>
 							</Modal.Footer>
 						</div>
 					</form>
 				</Modal.Body>
 			</Modal>
+
 			<div className="products">
 				<div className="products__add">
 					<Link to="/AddProduct" style={{ 'text-decoration': 'none' }}>
@@ -137,43 +154,38 @@ function Products() {
 						</h5>
 					</Link>
 				</div>
-				<div className="products__list">
-					<ul className="product__cards">
-						{products.map((product) => (
-							<li class="cards__item" key={product.Id}>
-								<div class="card__content">
-									<h5 class="card__title">
-										{product.Name}
-										<div className="editDelete">
-											<a
-												onClick={handleShow}
-												style={{ textDecoration: 'none' }}
-												class="card_text">
-												<EditIcon
-													onClick={() => setDocId(product.Id)}
-													style={{ fontSize: 'default' }}
-												/>
-											</a>
-											&nbsp;&nbsp;
-											<a
-												onClick={() => setDocId(product.Id)}
-												style={{ 'text-decoration': 'none' }}
-												class="card_text">
-												<DeleteIcon
-													onClick={onDelete}
-													style={{ fontSize: 'default' }}
-												/>
-											</a>
-										</div>
-									</h5>
-									<h6 class="card__text">Category : {product.Category}</h6>
-									<h6 class="card__text">Price : ₹ {product.Price}</h6>
-									<h6 class="card__text">Quantity : {product.Quantity}</h6>
-								</div>
-							</li>
-						))}
-					</ul>
-				</div>
+				{products.length != 0 ? (
+					<div className="products__list">
+						<ul className="product__cards">
+							{products.map((product) => (
+								<li class="cards__item" key={product.Id}>
+									<div class="card__content">
+										<h5 class="card__title">
+											{product.Name}
+											<div className="editDelete">
+												<a
+													onClick={handleShow}
+													style={{ textDecoration: 'none' }}
+													class="card_text">
+													<EditIcon
+														onClick={() => setDoc(product)}
+														style={{ fontSize: 'default' }}
+													/>
+												</a>
+												&nbsp;
+											</div>
+										</h5>
+										<h6 class="card__text">Category : {product.Category}</h6>
+										<h6 class="card__text">Price : ₹ {product.Price}</h6>
+										<h6 class="card__text">Quantity : {product.Quantity}</h6>
+									</div>
+								</li>
+							))}
+						</ul>
+					</div>
+				) : (
+					<h5 class="ml-4">👆 please add your products show here !</h5>
+				)}
 			</div>
 		</div>
 	);

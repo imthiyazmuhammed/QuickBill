@@ -1,8 +1,27 @@
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
-
+import { auth } from './Firebase';
+import React, { useEffect, useState } from 'react';
+import db from './Firebase';
+const id = auth.currentUser?.uid;
+const prd = db.collection('users').doc(id).collection('products');
+/* useEffect(() => {
+	//run code when products component loads
+	prd.onSnapshot((snapshot) =>
+		setProducts(
+			snapshot.docs.map((doc) => ({
+				Id: doc.id,
+				Name: doc.data().Name,
+				Category: doc.data().Category,
+				Price: doc.data().Price,
+				Quantity: doc.data().Quantity,
+			}))
+		)
+	);
+}, []); */
 // define a generatePDF function that accepts an argument
 const PdfGenerator = (items) => {
+	
 	// initialize jsPDF
 	const doc = new jsPDF();
 	// define the columns we want and their titles

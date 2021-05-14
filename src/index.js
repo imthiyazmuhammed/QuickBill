@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import { StateProvider } from './StateProvider';
 import reducer, { initialState } from './reducer';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 
 ReactDOM.render(
 	<React.StrictMode>

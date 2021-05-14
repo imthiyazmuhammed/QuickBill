@@ -9,7 +9,7 @@ function Body() {
 	const [count, setCount] = useState();
 	const styles = {
 		bounceInLeft: {
-			animation: 'x 1s',
+			animation: 'x 0.5s',
 			animationName: Radium.keyframes(bounceInLeft, 'bounceInLeft'),
 		},
 	};
@@ -49,7 +49,17 @@ function Body() {
 			) : (
 				<div className="image">
 					<img className="image" src={BodyImage}></img>
-					<h4>Search and List your Products here...</h4>
+					<h6>Search and list products here...</h6>
+					<div className="updates">
+						<pre class="mt-4">✔ Login with google authentication</pre>
+						<pre>✔ CRUD functionality on products</pre>
+						<pre>✔ Easy search of added products</pre>
+						<pre>✔ Create PDF invoice with the listed items</pre>
+						<pre>✔ Add and update store details </pre>
+						<pre>✔ Customer database</pre>
+						<pre class="mt-4">❌ Credit on customer</pre>
+						<pre>❌ share generated invoice tothe customer</pre>
+					</div>
 				</div>
 			)}
 		</div>

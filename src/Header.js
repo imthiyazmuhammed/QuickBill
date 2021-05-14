@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import db from './Firebase';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import { auth, provider } from './Firebase';
+import { auth } from './Firebase';
 import { useStateValue } from './StateProvider';
 
 function Header() {
@@ -14,6 +14,7 @@ function Header() {
 	const [singleProd, setSingleProd] = useState([]); //getting the clicked product
 	const [{ basket }, dispatch] = useStateValue([]);
 	const id = auth.currentUser?.uid;
+	const [open, setOpen] = useState(false);
 
 	useEffect(() => {
 		fetch(
@@ -71,17 +72,18 @@ function Header() {
 					<h3>QuickBill</h3>
 				</Link>
 			</div>
-			<div className="header__search ">
+			<div className="header__search">
 				<form {...getComboboxProps()}>
 					<input
 						class="form-control container-fluid header__searchInput"
 						placeholder="Search Products"
+						onClick={() => setOpen(!open)}
 						{...getInputProps()}
-						href=""></input>
-					<div className="header__dropdown">
-						<ul {...getMenuProps()} class="header__searchlist">
-							{isOpen &&
-								inputItems.map((item, index) => (
+					/>
+					{open && (
+						<div className="header__dropdown">
+							<ul {...getMenuProps()} class="header__searchlist">
+								{inputItems.map((item, index) => (
 									<span
 										{...getItemProps({ item, index })}
 										onClick={() => {
@@ -93,7 +95,7 @@ function Header() {
 											});
 										}}>
 										<li className="list_group_item">
-											<h6>{item.Name}</h6>
+											<h6>{item.Name}</h6>&nbsp;&nbsp;&nbsp;
 											<span>
 												<RemoveIcon />
 												<AddIcon />
@@ -101,8 +103,9 @@ function Header() {
 										</li>
 									</span>
 								))}
-						</ul>
-					</div>
+							</ul>
+						</div>
+					)}
 				</form>
 			</div>
 		</div>
