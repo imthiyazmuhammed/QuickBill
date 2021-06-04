@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.css';
 import { auth, provider } from './Firebase';
 import { useStateValue } from './StateProvider';
@@ -8,6 +8,14 @@ import logo from './icons/Untitled-1.png';
 function Login() {
 	const [state, dispatch] = useStateValue();
 
+	useEffect((e) => {
+		auth.onAuthStateChanged((user) => {
+			dispatch({
+				type: actionTypes.SET_USER,
+				user: user,
+			});
+		});
+	}, []);
 	const signIn = (e) => {
 		auth
 			.signInWithPopup(provider)
@@ -26,7 +34,7 @@ function Login() {
 		<div className="login">
 			<img src={logo} alt="Image not available" />
 			<h3>QuickBill</h3>
-			<button type="button" class="btn btn-dark" onClick={signIn}>
+			<button type="button" className="btn btn-dark" onClick={signIn}>
 				Sign-In with Google
 			</button>
 			<h6>Billing made Quicker with ❤</h6>

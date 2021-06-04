@@ -52,7 +52,7 @@ function Products() {
 			.then(() => {
 				setProductName('');
 				setProductPrice();
-				setProductQuantity();
+				setProductQuantity('');
 				setProductCategory('');
 				alert('Product edited');
 			})
@@ -61,7 +61,7 @@ function Products() {
 	};
 
 	const onDelete = () => {
-		if (window.confirm('Are you sure to delete this product?')) {
+		if (window.confirm(`Are you sure to delete ${doc.Name}?`)) {
 			prd.doc(doc.Id).delete();
 			handleClose();
 		}

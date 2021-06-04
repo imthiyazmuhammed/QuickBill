@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import Header from './Header';
+import Nav from './Nav';
 import Footer from './Footer';
 import Body from './Body';
 import Products from './Products';
@@ -24,24 +24,24 @@ function App() {
 					<>
 						<Switch>
 							<Route path="/Products">
-								<Header />
+								<Nav />
 								<Products />
 							</Route>
 							<Route path="/AddProduct">
-								<Header />
+								<Nav />
 								<AddProduct />
 							</Route>
 							<Route path="/customer">
-								<Header />
+								<Nav />
 								<Customer />
 							</Route>
 							
 							<Route path="/Pdf">
-								<Header />
+								<Nav />
 								<Pdf />
 							</Route>
 							<Route path="/">
-								<Header />
+								<Nav />
 								<Body />
 								<Footer />
 							</Route>
