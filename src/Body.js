@@ -5,7 +5,7 @@ import { bounceInLeft } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
 import BodyImage from './icons/body.svg';
 import db, { auth } from './Firebase';
-import { getBasketTotal } from './reducer';
+import { getBasketTotal, getQuantityTotal } from './reducer';
 import CurrencyFormat from 'react-currency-format';
 
 function Body() {
@@ -61,7 +61,7 @@ function Body() {
 					</select>
 				</div>
 			</div>
-			{basket.length > 1 ? (
+			{basket.length > 0 ? (
 				<StyleRoot>
 					<table className="body__table table-striped">
 						<thead>
@@ -77,20 +77,22 @@ function Body() {
 						<tbody>
 							{basket.map((item, index) => (
 								<tr style={styles.bounceInLeft} key={index}>
-									<td scope="col">{index}</td>
-									<td scope="col">{item.Name}</td>
-									<td scope="col">{item.Quantity}</td>
-									<td scope="col">{item.Price}</td>
-									<td scope="col">{item.Price}</td>
+									<td scope="col">{index + 1}</td>
+									<td scope="col">{item.name}</td>
+									<td scope="col">{item.quantity}</td>
+									<td scope="col">{item.price}</td>
+									<td scope="col">{item.price}</td>
 								</tr>
 							))}
 							<tr style={styles.bounceInLeft} className="mt-2">
 								<td scope="col" colSpan="2">
 									<b>Total</b>
 								</td>
+
 								<td scope="col">
-									<b>{getBasketTotal(basket)}</b>
+									<strong>{getQuantityTotal(basket)} nos.</strong>
 								</td>
+
 								<td scope="col">
 									<b>78</b>
 								</td>
@@ -103,6 +105,7 @@ function Body() {
 									)}
 									decimalScale={2}
 									value={getBasketTotal(basket)}
+									thousandSeperator={true}
 									displayType={'text'}
 									prefix={'₹ '}
 								/>

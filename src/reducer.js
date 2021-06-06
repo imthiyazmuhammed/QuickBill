@@ -4,12 +4,14 @@ export const initialState = {
 };
 
 export const getBasketTotal = (basket) =>
-	basket?.reduce((amount, item) => item.Price + amount, 0);
+	basket?.reduce((amount, item) => item.price + amount, 0);
 
-console.log(getBasketTotal);
+export const getQuantityTotal = (basket) =>
+	basket?.reduce((amount, item) => item.price + amount, 0);
+
 /* const reducer = (state, action) => {
 	console.log(action);
-	switch (action.type) {
+	switch (action.type) 	{
 		case 'addToBasket': {
 			const itemIndex = state.basket.findIndex(
 				(basketItem) => basketItem.id === action.id
@@ -41,14 +43,24 @@ console.log(getBasketTotal);
 	}
 }; */
 const reducer = (state, action) => {
-	
 	switch (action.type) {
-		case 'addToBasket':
+		case 'addToBasket': {
+			const itemIndex = state.basket.findIndex(
+				(basketItem) => basketItem.id === action.id
+			);
+			let newBasket = [...state.basket];
+			if (itemIndex >= 0) {
+				newBasket[itemIndex].quantity += 1;
+			} else {
+				newBasket = [...state.basket, action.item];
+			}
+			localStorage.setItem('basket', JSON.stringify(newBasket));
+
 			return {
 				...state,
-				basket: [...state.basket, action.item],
+				basket: newBasket,
 			};
-
+		}
 		case 'SET_USER':
 			return {
 				...state,

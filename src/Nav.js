@@ -3,25 +3,21 @@ import { useCombobox } from 'downshift';
 import './Nav.css';
 import { Link, useHistory } from 'react-router-dom';
 import db from './Firebase';
-import AddIcon from '@material-ui/icons/Add';
-import RemoveIcon from '@material-ui/icons/Remove';
 import { auth } from './Firebase';
-import { useStateValue } from './StateProvider';
 import { Drawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import FormatListBulletedIcon from '@material-ui/icons/FormatListBulleted';
 import PeopleIcon from '@material-ui/icons/People';
 import HomeIcon from '@material-ui/icons/Home';
+import NavItem from './NavItem';
 
 function Nav() {
 	const [inputItems, setInputItems] = useState([]); //input value
 	const [prods, setProds] = useState([]); //accessing from database
 	const [singleProd, setSingleProd] = useState([]); //getting the clicked product
-	const [{ basket }, dispatch] = useStateValue([]);
 	const id = auth.currentUser?.uid;
 	const [drawer, setDrawer] = useState(false);
-	const [counter, setCounter] = useState(1);
 	const history = useHistory();
 	useEffect(() => {
 		fetch(
@@ -33,50 +29,32 @@ function Nav() {
 					setProds(
 						snapshot.docs.map((doc) => ({
 							id: doc.id,
-							Name: doc.data().Name,
-							Category: doc.data().Category,
-							Price: doc.data().Price,
-							Quantity: doc.data().Quantity,
+							name: doc.data().Name,
+							category: doc.data().Category,
+							price: doc.data().Price,
+							quantity: doc.data().Quantity,
 						}))
 					)
 				)
 		);
 	}, []);
-	useEffect(() => {
+	/* 	useEffect(() => {
 		addToBasket();
 	}, [singleProd]);
-
-	const {
-		isOpen,
-		getMenuProps,
-		getInputProps,
-		getComboboxProps,
-		getItemProps,
-		highlightedIndex,
-		getToggleButtonProps,
-	} = useCombobox({
-		items: inputItems,
-		onInputValueChange: ({ inputValue }) => {
-			setInputItems(
-				prods.filter((item) =>
-					item.Name.toLowerCase().includes(inputValue.toLowerCase())
-				)
-			);
-		},
-	});
-
-	const addToBasket = () => {
-		dispatch({
-			type: 'addToBasket',
-			item: {
-				id: singleProd.id,
-				Name: singleProd.Name,
-				Price: singleProd.Price,
-				Category: singleProd.Category,
-				Quantity: counter,
+ */
+	const { isOpen, getMenuProps, getInputProps, getComboboxProps } = useCombobox(
+		{
+			items: inputItems,
+			onInputValueChange: ({ inputValue }) => {
+				setInputItems(
+					prods.filter((item) =>
+						item.name.toLowerCase().includes(inputValue.toLowerCase())
+					)
+				);
 			},
-		});
-	};
+		}
+	);
+
 	const handleLogout = () => {
 		if (window.confirm('Do you really want to logOut')) auth.signOut();
 	};
@@ -129,42 +107,9 @@ function Nav() {
 					<div className="search__dropdown">
 						<ul {...getMenuProps()} className="list-group">
 							{isOpen &&
-								inputItems.map((item, index) => (
-									<li
-										className="list__item"
-										key={index}
-										style={
-											highlightedIndex === index
-												? { backgroundColor: '#bde4ff' }
-												: {}
-										}
-										{...getToggleButtonProps()}
-										{...getItemProps({ item, index })}
-										onClick={() => {
-											setSingleProd({
-												id: item.id,
-												Name: item.Name,
-												Category: item.Category,
-												Price: item.Price,
-												Quantity: item.Quantity,
-											});
-										}}>
-										<h6>{item.Name}</h6>
-										<span>
-											<RemoveIcon
-												onClick={() => {
-													setCounter(counter - 1);
-												}}
-											/>
-											{counter}
-											<AddIcon
-												onClick={() => {
-													setCounter(counter + 1);
-												}}
-											/>
-										</span>
-									</li>
-								))}
+								inputItems.map((item, index) => {
+									return <NavItem key={index} item={item} highlightedIndex />;
+								})}
 						</ul>
 					</div>
 				</form>
