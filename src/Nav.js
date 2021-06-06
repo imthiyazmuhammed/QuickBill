@@ -5,7 +5,7 @@ import { Link, useHistory } from 'react-router-dom';
 import db from './Firebase';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
-import { auth, provider } from './Firebase';
+import { auth } from './Firebase';
 import { useStateValue } from './StateProvider';
 import { Drawer } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
@@ -21,6 +21,7 @@ function Nav() {
 	const [{ basket }, dispatch] = useStateValue([]);
 	const id = auth.currentUser?.uid;
 	const [drawer, setDrawer] = useState(false);
+	const [counter, setCounter] = useState(1);
 	const history = useHistory();
 	useEffect(() => {
 		fetch(
@@ -31,6 +32,7 @@ function Nav() {
 				.onSnapshot((snapshot) =>
 					setProds(
 						snapshot.docs.map((doc) => ({
+							id: doc.id,
 							Name: doc.data().Name,
 							Category: doc.data().Category,
 							Price: doc.data().Price,
@@ -43,6 +45,7 @@ function Nav() {
 	useEffect(() => {
 		addToBasket();
 	}, [singleProd]);
+
 	const {
 		isOpen,
 		getMenuProps,
@@ -61,14 +64,16 @@ function Nav() {
 			);
 		},
 	});
+
 	const addToBasket = () => {
 		dispatch({
 			type: 'addToBasket',
 			item: {
+				id: singleProd.id,
 				Name: singleProd.Name,
 				Price: singleProd.Price,
 				Category: singleProd.Category,
-				Quantity: singleProd.Quantity,
+				Quantity: counter,
 			},
 		});
 	};
@@ -78,7 +83,7 @@ function Nav() {
 
 	return (
 		<div className="container-fluid header">
-			<Drawer anchor="left" open={drawer} onClose={() => setDrawer(!drawer)}>
+			<Drawer anchor="left" open={drawer} onClick={() => setDrawer(!drawer)}>
 				<div className="drawer">
 					<div className="drawer__item" onClick={() => history.push('/')}>
 						<HomeIcon />
@@ -102,14 +107,14 @@ function Nav() {
 					</div>
 				</div>
 			</Drawer>
-
 			<MenuIcon
+				style={{ fill: 'whitesmoke' }}
 				className="menuIcon"
 				onClick={() => setDrawer(!drawer)}
 				fontSize="large"
 			/>
 			<Link to="/" style={{ 'text-decoration': 'none' }}>
-				<h3 className="h3">QuickBill</h3>
+				<h3 className="h3 ml-5">QuickBill</h3>
 			</Link>
 
 			<div className="header__search col">
@@ -137,6 +142,7 @@ function Nav() {
 										{...getItemProps({ item, index })}
 										onClick={() => {
 											setSingleProd({
+												id: item.id,
 												Name: item.Name,
 												Category: item.Category,
 												Price: item.Price,
@@ -145,8 +151,17 @@ function Nav() {
 										}}>
 										<h6>{item.Name}</h6>
 										<span>
-											<RemoveIcon />
-											<AddIcon />
+											<RemoveIcon
+												onClick={() => {
+													setCounter(counter - 1);
+												}}
+											/>
+											{counter}
+											<AddIcon
+												onClick={() => {
+													setCounter(counter + 1);
+												}}
+											/>
 										</span>
 									</li>
 								))}

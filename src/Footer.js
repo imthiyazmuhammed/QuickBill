@@ -9,13 +9,25 @@ function Footer() {
 	return (
 		<div className="footer">
 			<Link to="/Customer">
-				<AccountCircleIcon className="footer__icon" />
+				<AccountCircleIcon
+					fontSize="large"
+					style={{ fill: '#2d4e6b' }}
+					className="footer__icon"
+				/>
 			</Link>
 			<Link to="/Products">
-				<ListIcon className="footer__icon" />
+				<ListIcon
+					fontSize="large"
+					style={{ fill: '#2d4e6b' }}
+					className="footer__icon"
+				/>
 			</Link>
 			<Link to="/Pdf">
-				<GetAppIcon className="footer__icon" />
+				<GetAppIcon
+					fontSize="large"
+					style={{ fill: '#2d4e6b' }}
+					className="footer__icon"
+				/>
 			</Link>
 		</div>
 	);

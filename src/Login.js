@@ -11,7 +11,7 @@ function Login() {
 	useEffect((e) => {
 		auth.onAuthStateChanged((user) => {
 			dispatch({
-				type: actionTypes.SET_USER,
+				type: 'SET_USER',
 				user: user,
 			});
 		});
@@ -21,7 +21,7 @@ function Login() {
 			.signInWithPopup(provider)
 			.then((result) => {
 				dispatch({
-					type: actionTypes.SET_USER,
+					type: 'SET_USER',
 					user: result.user,
 				});
 			})

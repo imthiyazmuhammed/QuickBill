@@ -68,7 +68,7 @@ function Products() {
 	};
 
 	return (
-		<div className="products">
+		<div className="container">
 			<Modal
 				show={show}
 				onHide={handleClose}
@@ -148,40 +148,41 @@ function Products() {
 			<div className="products">
 				<div className="products__add">
 					<Link to="/AddProduct" style={{ 'text-decoration': 'none' }}>
-						<h5>
-							<AddCircleIcon fontSize="medium" />
+						<h5 className="h5">
+							<AddCircleIcon fontSize="default" />
 							&nbsp; Add new product
 						</h5>
 					</Link>
 				</div>
 				{products.length != 0 ? (
-					<div className="products__list">
-						<ul className="product__cards">
-							{products.map((product) => (
-								<li class="cards__item" key={product.Id}>
-									<div class="card__content">
-										<h5 class="card__title">
-											{product.Name}
-											<div className="editDelete">
-												<a
-													onClick={handleShow}
-													style={{ textDecoration: 'none' }}
-													class="card_text">
-													<EditIcon
-														onClick={() => setDoc(product)}
-														style={{ fontSize: 'default' }}
-													/>
-												</a>
-												&nbsp;
-											</div>
-										</h5>
-										<h6 class="card__text">Category : {product.Category}</h6>
-										<h6 class="card__text">Price : ₹ {product.Price}</h6>
-										<h6 class="card__text">Quantity : {product.Quantity}</h6>
+					<div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-1">
+						{products.map((product) => (
+							<div className="col mb-2 card p-0" key={product.Id}>
+								<div className="card-body p-3">
+									<div className="card-title product__header">
+										<b>{product.Name}</b>
+										<div className="editDelete">
+											<a
+												onClick={handleShow}
+												style={{ textDecoration: 'none' }}
+												className="card_text">
+												<EditIcon
+													className="m-1 editIcon"
+													onClick={() => setDoc(product)}
+													fontSize="default"
+												/>
+											</a>
+											&nbsp;
+										</div>
 									</div>
-								</li>
-							))}
-						</ul>
+									<p className="card__text m-1">
+										Category : {product.Category}
+									</p>
+									<p className="card__text m-1">Price : ₹ {product.Price}</p>
+									<p className="card__text m-1">Stock : {product.Quantity}</p>
+								</div>
+							</div>
+						))}
 					</div>
 				) : (
 					<h5 class="ml-4">👆 please add your products show here !</h5>

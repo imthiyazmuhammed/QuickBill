@@ -1,53 +1,9 @@
-.customer__retailer {
-	display: grid;
-	flex-direction: row;
-	justify-content: space-around;
-	margin: 20px;
-}
-.customer__hello {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	margin: 15px;
-}
 .customer__shop {
 	display: flex;
-	justify-content: space-evenly;
+	justify-content: flex-start;
 	align-items: center;
 	margin: 15px;
 }
-
-@media (min-width: 40rem) {
-	.cards__item {
-		width: 50%;
-	}
-}
-
-@media (min-width: 56rem) {
-	.cards__item {
-		width: 33.3333%;
-	}
-}
-.card__content {
-	border-radius: 0.25rem;
-	box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
-	display: flex;
-	justify-content: space-between !important;
-	flex-direction: column;
-	overflow: hidden;
-	padding: 1rem;
-}
-.card__title {
-	color: black;
-	font-size: 1.1rem;
-	font-weight: 700;
-	margin-top: 10px;
-	padding-bottom: 0.5rem;
-	display: flex;
-	justify-content: space-between;
-}
 .card__text {
-	color: black;
-	font-size: 1rem;
-	font-weight: 400;
+	color: rgb(75, 74, 74);
 }
