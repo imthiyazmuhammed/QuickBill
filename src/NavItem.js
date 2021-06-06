@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import { useStateValue } from './StateProvider';
 
-function NavItem({ index, item, highlightedIndex }) {
+function NavItem({ item }) {
 	const [{ basket }, dispatch] = useStateValue([]);
+	const [counter, setCounter] = useState(1);
 	const addToBasket = () => {
 		dispatch({
 			type: 'addToBasket',
@@ -13,36 +14,23 @@ function NavItem({ index, item, highlightedIndex }) {
 				name: item.name,
 				price: item.price,
 				category: item.category,
-				quantity: 1,
+				quantity: counter,
 			},
 		});
 	};
 	const plusQuantity = () => {
-		dispatch({
-			type: 'addToBasket',
-			item: {
-				id: item.id,
-			},
-		});
+		setCounter(counter + 1);
 	};
 	const minusQuantity = () => {
-		dispatch({
-			type: 'removeFromBasket',
-			item: {
-				id: item.id,
-			},
-		});
+		setCounter(counter - 1);
 	};
 	return (
 		<div className="navItem">
-			<li
-				className="list__item"
-				style={highlightedIndex === index ? { backgroundColor: '#bde4ff' } : {}}
-				onClick={addToBasket}>
-				<h6>{item.name}</h6>
+			<li className="list__item">
+				<h6 onClick={addToBasket}>{item.name}</h6>
 				<span>
 					<RemoveIcon onClick={minusQuantity} />
-
+					{counter}
 					<AddIcon onClick={plusQuantity} />
 				</span>
 			</li>

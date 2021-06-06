@@ -68,8 +68,9 @@ function Body() {
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Item</th>
-								<th scope="col">Quantity</th>
 								<th scope="col">Price</th>
+								<th scope="col">Quantity</th>
+
 								<th scope="col">Amount</th>
 							</tr>
 						</thead>
@@ -79,13 +80,13 @@ function Body() {
 								<tr style={styles.bounceInLeft} key={index}>
 									<td scope="col">{index + 1}</td>
 									<td scope="col">{item.name}</td>
+									<td scope="col">{item.price}</td>
 									<td scope="col">{item.quantity}</td>
-									<td scope="col">{item.price}</td>
-									<td scope="col">{item.price}</td>
+									<td scope="col">{item.price * item.quantity}</td>
 								</tr>
 							))}
 							<tr style={styles.bounceInLeft} className="mt-2">
-								<td scope="col" colSpan="2">
+								<td scope="col" colSpan="3">
 									<b>Total</b>
 								</td>
 
@@ -93,21 +94,19 @@ function Body() {
 									<strong>{getQuantityTotal(basket)} nos.</strong>
 								</td>
 
-								<td scope="col">
-									<b>78</b>
-								</td>
-
 								<CurrencyFormat
 									renderText={(value) => (
-										<td scope="col">
-											<strong>{value}</strong>
-										</td>
+										<>
+											<td scope="col">
+												<strong>{value}</strong>
+											</td>
+										</>
 									)}
 									decimalScale={2}
 									value={getBasketTotal(basket)}
-									thousandSeperator={true}
 									displayType={'text'}
-									prefix={'₹ '}
+									thousandSeperator={true}
+									prefix={'₹'}
 								/>
 							</tr>
 						</tbody>

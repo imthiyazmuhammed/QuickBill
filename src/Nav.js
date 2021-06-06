@@ -38,10 +38,7 @@ function Nav() {
 				)
 		);
 	}, []);
-	/* 	useEffect(() => {
-		addToBasket();
-	}, [singleProd]);
- */
+
 	const { isOpen, getMenuProps, getInputProps, getComboboxProps } = useCombobox(
 		{
 			items: inputItems,

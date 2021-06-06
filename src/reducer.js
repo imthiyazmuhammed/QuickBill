@@ -2,12 +2,18 @@ export const initialState = {
 	basket: [],
 	user: null,
 };
-
 export const getBasketTotal = (basket) =>
-	basket?.reduce((amount, item) => item.price + amount, 0);
+	basket?.reduce(
+		(amount, item) =>
+			parseFloat(item.price) * parseFloat(item.quantity) + parseFloat(amount),
+		0
+	);
 
 export const getQuantityTotal = (basket) =>
-	basket?.reduce((amount, item) => item.price + amount, 0);
+	basket?.reduce(
+		(quantity, item) => parseFloat(item.quantity) + parseFloat(quantity),
+		0
+	);
 
 /* const reducer = (state, action) => {
 	console.log(action);
