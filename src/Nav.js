@@ -89,7 +89,7 @@ function Nav() {
 				fontSize="large"
 			/>
 			<Link to="/" style={{ 'text-decoration': 'none' }}>
-				<h3 className="h3 ml-5">QuickBill</h3>
+				<h3 className="h3 ml-5">QB</h3>
 			</Link>
 
 			<div className="header__search col">

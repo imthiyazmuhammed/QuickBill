@@ -31,13 +31,37 @@ function Login() {
 	};
 
 	return (
-		<div className="login">
-			<img src={logo} alt="Image not available" />
-			<h3>QuickBill</h3>
-			<button type="button" className="btn btn-dark" onClick={signIn}>
-				Sign-In with Google
-			</button>
-			<h6>Billing made Quicker with ❤</h6>
+		<div className="waveWrapper waveAnimation">
+			<div className="login">
+				<img src={logo} alt="Image not available" />
+				<h3>QuickBill</h3>
+				<div>
+					<button
+						onClick={signIn}
+						className="btn btn-outline-primary mt-3"
+						style={{ textDecoration: 'none' }}
+						href="#">
+						<img
+							width="15px"
+							style={{ marginBottom: '3px', marginRight: '5px' }}
+							alt="Google login"
+							src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png"
+						/>
+						Sign in with Google
+					</button>
+				</div>
+				<h6>Billing made Quicker with ❤</h6>
+			</div>
+
+			<div className="waveWrapperInner bgTop">
+				<div className="wave waveTop"></div>
+			</div>
+			<div className="waveWrapperInner bgMiddle">
+				<div className="wave waveMiddle"></div>
+			</div>
+			<div className="waveWrapperInner bgBottom">
+				<div className="wave waveBottom"></div>
+			</div>
 		</div>
 	);
 }

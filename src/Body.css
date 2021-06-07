@@ -16,18 +16,29 @@ th,
 td {
 	border: 1px dotted #6ca189;
 }
-.image {
-	height: 10rem;
+.bodycart__empty {
+	display: flex;
+	flex-direction: column;
+}
+.bodyCart {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+.bodyCart > img {
+	height: 13rem;
+	object-fit: contain;
 	margin-top: 2rem;
 	text-align: center;
 	align-items: center;
 }
-.image > h4 {
-	margin-top: 2rem;
-}
+
 .updates {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	margin-bottom: 200px;
+}
+.bodyCart > h6 {
+	font-family: URW Chancery L, cursive;
 }

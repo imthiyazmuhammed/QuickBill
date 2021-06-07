@@ -3,7 +3,7 @@ import './Body.css';
 import { useStateValue } from './StateProvider';
 import { bounceInLeft } from 'react-animations';
 import Radium, { StyleRoot } from 'radium';
-import BodyImage from './icons/body.svg';
+import emptyCart from './icons/emptyCart.png';
 import db, { auth } from './Firebase';
 import { getBasketTotal, getQuantityTotal } from './reducer';
 import CurrencyFormat from 'react-currency-format';
@@ -113,11 +113,13 @@ function Body() {
 					</table>
 				</StyleRoot>
 			) : (
-				<div className="image">
-					<img className="image" src={BodyImage}></img>
-					<h6>Search and list products here...</h6>
-					<div className="updates">
-						<pre className="mt-4 mb-10">✔ Login with google authentication</pre>
+				<div className="bodycart__empty">
+					<div className="bodyCart">
+						<img className="" src={emptyCart}></img>
+						<h6>Search and list products here...</h6>
+					</div>
+					<div className="updates mt-5 mb-5">
+						<pre className="">✔ Login with google authentication</pre>
 						<pre>✔ CRUD functionality on products</pre>
 						<pre>✔ Easy search of added products</pre>
 						<pre>✔ Create PDF invoice with the listed items</pre>

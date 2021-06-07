@@ -1,12 +1,13 @@
 .login {
-	position: relative;
-	margin: 6rem auto 8rem auto;
-	width: 25em;
+	display: grid;
+	margin: 4rem auto 8rem auto;
+	width: 20em;
 	border-radius: 5px;
 	box-shadow: 3px 3px 10px rgb(199, 192, 192);
 	padding: 15px;
-	display: grid;
 	place-items: center;
+	z-index: 100;
+	background-color: white;
 }
 .login > img {
 	object-fit: contain;
@@ -15,22 +16,89 @@
 	text-align: center;
 }
 .login > h3 {
+	font-family: 'Andale Mono, monospace', cursive;
 	font-weight: 300;
-	font-size: 3em;
-	margin: 2rem;
-	color: black;
-}
-.login > Button {
-	color: white !important;
-	font-size: 18px;
-	font-weight: 200;
+	font-size: 2.5em;
 	margin: 1.5rem;
-	cursor: pointer;
-	transition: box-shadow 0.4s ease;
-	text-transform: inherit !important;
+	color: rgb(71, 54, 54);
 }
+
 .login > h6 {
-	margin-top: 50px !important;
+	margin-top: 50px;
 	padding-bottom: 2px;
-	color: grey !important;
+	color: grey;
+}
+
+@keyframes move_wave {
+	0% {
+		transform: translateX(0) translateZ(0) scaleY(1);
+	}
+	50% {
+		transform: translateX(-25%) translateZ(0) scaleY(0.55);
+	}
+	100% {
+		transform: translateX(-50%) translateZ(0) scaleY(1);
+	}
+}
+.waveWrapper {
+	display: grid;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	margin: auto;
+}
+.waveWrapperInner {
+	position: absolute;
+	width: 100%;
+	overflow: hidden;
+	height: 100%;
+	bottom: -1px;
+	background-image: linear-gradient(to top, #86377b 20%, #27273c 80%);
+}
+.bgTop {
+	z-index: 15;
+	opacity: 0.5;
+}
+.bgMiddle {
+	z-index: 10;
+	opacity: 0.75;
+}
+.bgBottom {
+	z-index: 5;
+}
+.wave {
+	position: absolute;
+	left: 0;
+	width: 200%;
+	height: 100%;
+	background-repeat: repeat no-repeat;
+	background-position: 0 bottom;
+	transform-origin: center bottom;
+}
+.waveTop {
+	background-size: 50% 100px;
+	background-image: url('http://front-end-noobs.com/jecko/img/wave-top.png');
+}
+.waveAnimation .waveTop {
+	animation: move-wave 3s;
+	-webkit-animation: move-wave 3s;
+	-webkit-animation-delay: 1s;
+	animation-delay: 1s;
+}
+.waveMiddle {
+	background-size: 50% 120px;
+	background-image: url('http://front-end-noobs.com/jecko/img/wave-mid.png');
+}
+.waveAnimation .waveMiddle {
+	animation: move_wave 10s linear infinite;
+}
+.waveBottom {
+	background-size: 50% 100px;
+	background-image: url('http://front-end-noobs.com/jecko/img/wave-bot.png');
+}
+.waveAnimation .waveBottom {
+	animation: move_wave 15s linear infinite;
 }
