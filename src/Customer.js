@@ -232,7 +232,9 @@ function Customer() {
 							&nbsp; hello<b>&nbsp;{user?.displayName}</b>
 						</h6>
 
-						<h6 onClick={(e) => setShowShop(true)} className="customer__shop">
+						<h6
+							onClick={(e) => setShowShop(true)}
+							className="customer__shop mt-4 ">
 							<StorefrontIcon fontSize="default" />
 							&nbsp;Store details
 						</h6>
@@ -244,22 +246,22 @@ function Customer() {
 						</h6>
 					</section>
 				</div>
-				<div className="col card">
+				<div className="col card border-secondary">
 					{data != null ? (
 						<div className="data p-3">
-							<p className="card-text">
+							<p className="card-text my-2">
 								Shop :<b> {data.name}</b>
 							</p>
 
-							<p className="card-text">
+							<p className="card-text my-2">
 								Address :<b> {data.address}</b>
 							</p>
 
-							<p className="card-text">
+							<p className="card-text my-2">
 								Pincode :<b> {data.pincode}</b>
 							</p>
 
-							<p className="card-text">
+							<p className="card-text my-2">
 								phone :<b> {data.phone}</b>
 							</p>
 						</div>
@@ -272,9 +274,9 @@ function Customer() {
 			<div className="">
 				{customer.length != 0 ? (
 					<div className="">
-						<div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-1">
+						<div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 my-1 ">
 							{customer.map((cust) => (
-								<div className="col card" key={cust.Id}>
+								<div className="col card border-secondary my-2" key={cust.Id}>
 									<div className="card-body p-2">
 										<h5 className="card-title">{cust.name}</h5>
 										<h6 className="card-text card__text">

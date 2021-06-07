@@ -157,7 +157,9 @@ function Products() {
 				{products.length != 0 ? (
 					<div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-1">
 						{products.map((product) => (
-							<div className="col mb-2 card p-0" key={product.Id}>
+							<div
+								className="col mb-2 card p-0 border-secondary"
+								key={product.Id}>
 								<div className="card-body p-3">
 									<div className="card-title product__header">
 										<b>{product.Name}</b>

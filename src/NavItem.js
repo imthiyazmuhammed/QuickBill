@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
 import { useStateValue } from './StateProvider';
+import Truncate from 'react-truncate';
 
 function NavItem({ item }) {
 	const [{ basket }, dispatch] = useStateValue([]);
@@ -26,13 +27,24 @@ function NavItem({ item }) {
 	};
 	return (
 		<div className="navItem">
-			<li className="list__item">
-				<h6 onClick={addToBasket}>{item.name}</h6>
-				<span>
-					<RemoveIcon onClick={minusQuantity} />
-					{counter}
-					<AddIcon onClick={plusQuantity} />
-				</span>
+			<li className="navItem_list">
+				<div className="navItem__left" onClick={addToBasket}>
+					<Truncate lines={1} width={150} ellipsis={<span>...</span>}>
+						<h6>{item.name}</h6>
+					</Truncate>
+				</div>
+				<div className="navItem__right">
+					<div className="navItem__listQty">
+						<strong>₹{item.price}</strong>
+					</div>
+					<div className="navItem__listQty">
+						<span>
+							<RemoveIcon onClick={minusQuantity} />
+							{counter}
+							<AddIcon onClick={plusQuantity} />
+						</span>
+					</div>
+				</div>
 			</li>
 		</div>
 	);

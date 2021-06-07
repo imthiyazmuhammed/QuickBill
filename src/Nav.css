@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,400&display=swap');
+
 .header {
 	height: 80px;
 	padding: 10px 0 10px 0;
@@ -5,23 +7,23 @@
 	display: flex;
 }
 
-.h3,
 .menuIcon {
-	margin: 7px;
+	margin-top: 7px;
+	margin-left: 5px;
 	color: white;
+}
+.header__logo {
+	color: white;
+	margin-left: 45px;
+	margin-top: 14px;
+	font-family: 'Josefin Sans', sans-serif;
 }
 .search__dropdown {
 	overflow-y: auto;
-	max-height: 13rem;
+	max-height: 17rem;
 	margin-left: 7px;
 }
-.list__item {
-	background-color: whiteSmoke;
-	display: flex;
-	justify-content: space-between;
-	padding: 5px;
-	border: 0.5px solid grey;
-}
+
 .drawer {
 	padding: 10px;
 }
@@ -42,4 +44,40 @@
 	z-index: 200;
 	border-radius: 7px;
 	color: white !important;
+}
+.navItem_list {
+	background-color: whiteSmoke;
+	display: flex;
+	justify-content: space-evenly;
+	padding: 7px;
+	border: 2px solid #2d4e6b;
+	box-sizing: border-box;
+}
+
+.navItem__left {
+	display: flex;
+	width: 50%;
+}
+.navItem__right {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.navItem__listQty {
+	flex: 50%;
+	overflow: hidden;
+	align-items: center;
+	white-space: nowrap;
+}
+/* @media screen and (max-width: 992px) {
+	.navItem__listQty {
+		flex: 1;
+	}
+} */
+
+@media screen and(max-width:600px) {
+	.navItem__right {
+		flex-direction: column;
+	}
 }

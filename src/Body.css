@@ -42,3 +42,7 @@ td {
 .bodyCart > h6 {
 	font-family: URW Chancery L, cursive;
 }
+.body__customerLabel {
+	margin-left: 20px;
+	font-weight: 300;
+}

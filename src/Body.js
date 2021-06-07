@@ -41,7 +41,7 @@ function Body() {
 				<div className="select__customer">
 					<p>{select.credit}</p>
 
-					<label>Choose a customer &nbsp;</label>
+					<label className="body__customerLabel">Customer &nbsp;</label>
 					<select
 						name="customers"
 						className="form-select"

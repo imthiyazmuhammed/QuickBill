@@ -14,18 +14,38 @@ import NavItem from './NavItem';
 
 function Nav() {
 	const [inputItems, setInputItems] = useState([]); //input value
-	const [prods, setProds] = useState([]); //accessing from database
-	const [singleProd, setSingleProd] = useState([]); //getting the clicked product
+	const [prods, setProds] = useState([
+		{
+			id: 1,
+			name: 'DummyData1 add_product',
+			price: 109.95,
+			category: "men's clothing",
+			quantity: 100,
+		},
+		{
+			id: 2,
+			name: 'DummyData2 add_product',
+			price: 22.3,
+			category: "men's clothing",
+			quantity: 100,
+		},
+		{
+			id: 3,
+			name: 'DummyData3 add_product',
+			price: 35.4,
+			category: "men's clothing",
+			quantity: 100,
+		},
+	]); //dumm data or data fetched from databse
 	const id = auth.currentUser?.uid;
 	const [drawer, setDrawer] = useState(false);
 	const history = useHistory();
+	const productData = db.collection('users').doc(id).collection('products');
+
 	useEffect(() => {
 		fetch(
-			db
-				.collection('users')
-				.doc(id)
-				.collection('products')
-				.onSnapshot((snapshot) =>
+			productData.onSnapshot((snapshot) => {
+				if (snapshot.docs.length != 0) {
 					setProds(
 						snapshot.docs.map((doc) => ({
 							id: doc.id,
@@ -34,10 +54,11 @@ function Nav() {
 							price: doc.data().Price,
 							quantity: doc.data().Quantity,
 						}))
-					)
-				)
+					);
+				}
+			})
 		);
-	}, []);
+	}, [productData.doc]);
 
 	const { isOpen, getMenuProps, getInputProps, getComboboxProps } = useCombobox(
 		{
@@ -89,7 +110,7 @@ function Nav() {
 				fontSize="large"
 			/>
 			<Link to="/" style={{ 'text-decoration': 'none' }}>
-				<h3 className="h3 ml-5">QB</h3>
+				<h3 className="header__logo">QB</h3>
 			</Link>
 
 			<div className="header__search col">
