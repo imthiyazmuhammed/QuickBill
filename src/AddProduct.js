@@ -24,8 +24,8 @@ export const AddProduct = () => {
 			})
 			.then(() => {
 				setProductName('');
-				setProductPrice();
-				setProductQuantity();
+				setProductPrice('');
+				setProductQuantity('');
 				setProductCategory('');
 				setError('');
 				alert('Product added succesfully');

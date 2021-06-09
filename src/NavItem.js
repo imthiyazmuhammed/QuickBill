@@ -18,6 +18,7 @@ function NavItem({ item }) {
 				quantity: counter,
 			},
 		});
+		setCounter(1);
 	};
 	const plusQuantity = () => {
 		setCounter(counter + 1);
@@ -27,25 +28,23 @@ function NavItem({ item }) {
 	};
 	return (
 		<div className="navItem">
-			<li className="navItem_list">
-				<div className="navItem__left" onClick={addToBasket}>
-					<Truncate lines={1} width={150} ellipsis={<span>...</span>}>
-						<h6>{item.name}</h6>
-					</Truncate>
+			<div className="navItem__left" onClick={addToBasket}>
+				<Truncate lines={1} width={150} ellipsis={<span>...</span>}>
+					<h6>{item.name}</h6>
+				</Truncate>
+				<div className="navItem__listQty">
+					<strong>₹{item.price}</strong>
 				</div>
-				<div className="navItem__right">
-					<div className="navItem__listQty">
-						<strong>₹{item.price}</strong>
-					</div>
-					<div className="navItem__listQty">
-						<span>
-							<RemoveIcon onClick={minusQuantity} />
-							{counter}
-							<AddIcon onClick={plusQuantity} />
-						</span>
-					</div>
+			</div>
+			<div className="navItem__right">
+				<div className="navItem__listQty">
+					<span>
+						{counter > 1 && <RemoveIcon onClick={minusQuantity} />}
+						{counter}
+						<AddIcon onClick={plusQuantity} />
+					</span>
 				</div>
-			</li>
+			</div>
 		</div>
 	);
 }

@@ -7,6 +7,7 @@ import emptyCart from './icons/emptyCart.png';
 import db, { auth } from './Firebase';
 import { getBasketTotal, getQuantityTotal } from './reducer';
 import CurrencyFormat from 'react-currency-format';
+import SearchBar from './SearchBar';
 
 function Body() {
 	const [{ basket }, dispatch] = useStateValue();
@@ -37,6 +38,7 @@ function Body() {
 
 	return (
 		<div className="body">
+			<SearchBar />
 			<div className="body__header">
 				<div className="select__customer">
 					<p>{select.credit}</p>
@@ -80,9 +82,24 @@ function Body() {
 								<tr style={styles.bounceInLeft} key={index}>
 									<td scope="col">{index + 1}</td>
 									<td scope="col">{item.name}</td>
-									<td scope="col">{item.price}</td>
+									<CurrencyFormat
+										renderText={(value) => <td scope="col">{value}</td>}
+										decimalScale={2}
+										value={item.price}
+										displayType={'text'}
+										thousandSeperator={true}
+										prefix={'₹'}
+									/>
+
 									<td scope="col">{item.quantity}</td>
-									<td scope="col">{item.price * item.quantity}</td>
+									<CurrencyFormat
+										renderText={(value) => <td scope="col">{value}</td>}
+										decimalScale={2}
+										value={item.price * item.quantity}
+										displayType={'text'}
+										thousandSeperator={true}
+										prefix={'₹'}
+									/>
 								</tr>
 							))}
 							<tr style={styles.bounceInLeft} className="mt-2">
