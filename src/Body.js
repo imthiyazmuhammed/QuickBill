@@ -8,11 +8,21 @@ import db, { auth } from './Firebase';
 import { getBasketTotal, getQuantityTotal } from './reducer';
 import CurrencyFormat from 'react-currency-format';
 import SearchBar from './SearchBar';
+import Dialog from '@material-ui/core/Dialog';
+import MuiDialogContent from '@material-ui/core/DialogContent';
+import MuiDialogActions from '@material-ui/core/DialogActions';
+import Button from '@material-ui/core/Button';
+import Slide from '@material-ui/core/Slide';
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+	return <Slide direction="up" ref={ref} {...props} />;
+});
 
 function Body() {
-	const [{ basket }, dispatch] = useStateValue();
+	const [{ basket }, dispatch] = useStateValue([]);
 	const [customer, setCustomer] = useState([]);
 	const [select, setSelect] = useState([]);
+	const [open, setOpen] = useState(false);
 	const id = auth.currentUser?.uid;
 	useEffect(() => {
 		db.collection('users')
@@ -35,7 +45,15 @@ function Body() {
 			animationName: Radium.keyframes(bounceInLeft, 'bounceInLeft'),
 		},
 	};
-
+	const handleOpen = () => {
+		setOpen(!open);
+	};
+	/* const removeFromBasket = (item) => {
+		dispatch({
+			type: 'removeFromBasket',
+			item: { id: item.id },
+		});
+	}; */
 	return (
 		<div className="body">
 			<SearchBar />
@@ -77,9 +95,12 @@ function Body() {
 							</tr>
 						</thead>
 
-						<tbody>
+						<tbody style={{ cursor: 'pointer' }}>
 							{basket.map((item, index) => (
-								<tr style={styles.bounceInLeft} key={index}>
+								<tr
+									style={styles.bounceInLeft}
+									key={index}
+									onClick={handleOpen}>
 									<td scope="col">{index + 1}</td>
 									<td scope="col">{item.name}</td>
 									<CurrencyFormat
@@ -90,7 +111,35 @@ function Body() {
 										thousandSeperator={true}
 										prefix={'₹'}
 									/>
-
+									<Dialog
+										open={open}
+										TransitionComponent={Transition}
+										keepMounted
+										onHide={handleOpen}
+										aria-labelledby="alert-dialog-slide-title"
+										aria-describedby="alert-dialog-slide-description">
+										<MuiDialogContent dividers>
+											Are you sure you want to remove{' '}
+											<strong>{item.name} </strong> from basket
+										</MuiDialogContent>
+										<MuiDialogActions>
+											<Button onClick={handleOpen} color="primary">
+												Keep
+											</Button>
+											<Button
+												onClick={() => {
+													dispatch({
+														type: 'removeFromBasket',
+														item: { id: item.id },
+													});
+													setOpen(!open);
+												}}
+												color="secondary"
+												autoFocus>
+												Remove
+											</Button>
+										</MuiDialogActions>
+									</Dialog>
 									<td scope="col">{item.quantity}</td>
 									<CurrencyFormat
 										renderText={(value) => <td scope="col">{value}</td>}
