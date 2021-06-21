@@ -147,12 +147,13 @@ function Products() {
 
 			<div className="products">
 				<div className="products__add">
-					<Link to="/AddProduct" style={{ 'text-decoration': 'none' }}>
+					<Link to="/AddProduct" style={{ textDecoration: 'none' }}>
 						<h5 className="h5">
 							<AddCircleIcon fontSize="default" />
 							&nbsp; Add new product
 						</h5>
 					</Link>
+					<p>{products.length} Products</p>
 				</div>
 				{products.length != 0 ? (
 					<div className="row row-cols-2 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 m-1">

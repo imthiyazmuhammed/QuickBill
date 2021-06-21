@@ -13,6 +13,7 @@ import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
 import Button from '@material-ui/core/Button';
 import Slide from '@material-ui/core/Slide';
+import Select from 'react-select';
 
 const Transition = React.forwardRef(function Transition(props, ref) {
 	return <Slide direction="up" ref={ref} {...props} />;
@@ -20,8 +21,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 
 function Body() {
 	const [{ basket }, dispatch] = useStateValue([]);
-	const [customer, setCustomer] = useState([]);
-	const [select, setSelect] = useState([]);
+	const [customerList, setCustomerList] = useState([]);
+	const [select, setSelect] = useState({});
 	const [open, setOpen] = useState(false);
 	const id = auth.currentUser?.uid;
 	useEffect(() => {
@@ -29,10 +30,10 @@ function Body() {
 			.doc(id)
 			.collection('customer')
 			.onSnapshot((snapshot) => {
-				setCustomer(
+				setCustomerList(
 					snapshot.docs.map((doc) => ({
-						ID: doc.id,
-						name: doc.data().Name,
+						value: doc.id,
+						label: doc.data().Name,
 						credit: doc.data().Credit,
 					}))
 				);
@@ -48,40 +49,49 @@ function Body() {
 	const handleOpen = () => {
 		setOpen(!open);
 	};
-	/* const removeFromBasket = (item) => {
-		dispatch({
-			type: 'removeFromBasket',
-			item: { id: item.id },
-		});
-	}; */
+
+	const handleCustomer = (e) => {
+		let identity = customerList.find((obj) => obj.value === e?.value);
+		setSelect(identity);
+		if (identity) {
+			dispatch({
+				type: 'SET_CUSTOMER',
+				customer: {
+					label: identity.label,
+					id: identity.value,
+					credit: identity.credit,
+				},
+			});
+		} else {
+			dispatch({
+				type: 'SET_CUSTOMER',
+				customer: {
+					label: 'Customer',
+					id: 'Customer ID',
+					credit: 'No credit',
+				},
+			});
+		}
+	};
+	// useEffect(() => {
+	// 	console.log(customer);
+	// }, [select]);
 	return (
 		<div className="body">
 			<SearchBar />
-			<div className="body__header">
-				<div className="select__customer">
-					<p>{select.credit}</p>
-
-					<label className="body__customerLabel">Customer &nbsp;</label>
-					<select
-						name="customers"
-						className="form-select"
-						placeholder="Pick customer">
-						<option selected value="null" id="null">
-							None
-						</option>
-						{customer.map((cust, i) => (
-							<option
-								key={i}
-								onSelect={() => {
-									setSelect(cust);
-								}}>
-								{cust.name}
-							</option>
-						))}
-					</select>
+			<div className="body__header mx-4">
+				<p>Customer : &nbsp;</p>
+				<div className="selectcustomer">
+					<Select
+						value={customerList.find((cust) => cust.value === select)}
+						isSearchable
+						isClearable
+						onChange={handleCustomer}
+						options={customerList}
+					/>
 				</div>
 			</div>
-			{basket.length > 0 ? (
+			{basket.length !== 0 ? (
 				<StyleRoot>
 					<table className="body__table table-striped">
 						<thead>
@@ -115,7 +125,6 @@ function Body() {
 										open={open}
 										TransitionComponent={Transition}
 										keepMounted
-										onHide={handleOpen}
 										aria-labelledby="alert-dialog-slide-title"
 										aria-describedby="alert-dialog-slide-description">
 										<MuiDialogContent dividers>
@@ -129,7 +138,7 @@ function Body() {
 											<Button
 												onClick={() => {
 													dispatch({
-														type: 'removeFromBasket',
+														type: 'REMOVE_FROM_BASKET',
 														item: { id: item.id },
 													});
 													setOpen(!open);

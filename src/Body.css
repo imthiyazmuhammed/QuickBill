@@ -1,5 +1,3 @@
-
-
 .body {
 	padding: 0.5rem;
 	margin-top: 10px;
@@ -44,7 +42,14 @@ td {
 .bodyCart > h6 {
 	font-family: URW Chancery L, cursive;
 }
-.body__customerLabel {
-	margin-left: 20px;
-	font-weight: 300;
+
+.body__header {
+	display: flex;
+}
+.selectcustomer {
+	flex-grow: 1;
+}
+.body__header>p{
+	margin-top: 5px;
+	font-weight: 500;
 }

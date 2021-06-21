@@ -29,12 +29,12 @@ function SearchBar() {
 			category: 'abcdefghijklmnopqrstuvwxyz',
 			quantity: 100,
 		},
-	]); //dumm data or data fetched from databse
+	]); //dummy data or data fetched from databse
 	const productData = db.collection('users').doc(id).collection('products');
 	useEffect(() => {
 		fetch(
 			productData.onSnapshot((snapshot) => {
-				if (snapshot.docs.length != 0) {
+				if (snapshot.docs.length !== 0) {
 					setProds(
 						snapshot.docs.map((doc) => ({
 							id: doc.id,
@@ -48,7 +48,6 @@ function SearchBar() {
 			})
 		);
 	}, [productData.doc]);
-
 	const { isOpen, getMenuProps, getInputProps, getComboboxProps } = useCombobox(
 		{
 			items: inputItems,

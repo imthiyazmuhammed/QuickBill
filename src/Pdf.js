@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import './Pdf.css';
 import { useStateValue } from './StateProvider';
 import PdfGenerator from './pdfGenerator';
 import CurrencyFormat from 'react-currency-format';
 
 const Items = () => {
-	const [{ basket }, dispatch] = useStateValue();
-
+	const [{ basket, customer, shop }, dispatch] = useStateValue([]);
 	return (
 		<div className="pdf">
-			<button className="btn btn-primary" onClick={() => PdfGenerator(basket)}>
+			<button
+				className="btn btn-primary"
+				onClick={() => PdfGenerator(basket, customer, shop)}>
 				Generate Bill
 			</button>
 			<table class="body__table table-striped" style={{ overflowX: 'scroll' }}>

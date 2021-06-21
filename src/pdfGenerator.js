@@ -1,10 +1,10 @@
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import { auth } from './Firebase';
-import React, { useEffect, useState } from 'react';
 import db from './Firebase';
 const id = auth.currentUser?.uid;
 const prd = db.collection('users').doc(id).collection('products');
+
 /* useEffect(() => {
 	//run code when products component loads
 	prd.onSnapshot((snapshot) =>
@@ -20,7 +20,7 @@ const prd = db.collection('users').doc(id).collection('products');
 	);
 }, []); */
 // define a generatePDF function that accepts an argument
-const PdfGenerator = (items) => {
+const PdfGenerator = (items, customer, shop) => {
 	// initialize jsPDF
 	const doc = new jsPDF();
 	// define the columns we want and their titles
@@ -28,7 +28,6 @@ const PdfGenerator = (items) => {
 	// define an empty array of rows
 	const tableRows = [];
 	// for each items pass all its data into an array
-
 	items.forEach((item, index) => {
 		const itemData = [
 			index + 1,
@@ -40,21 +39,21 @@ const PdfGenerator = (items) => {
 		// push each item info into a row
 		tableRows.push(itemData);
 	});
-
 	// startY is basically margin-top
 	doc.autoTable(tableColumn, tableRows, { startY: 80 });
 	const date = Date().split(' ');
 	// we use a date string to generate our filename.
 	const dateStr = date[0] + date[1] + date[2] + date[3] + date[4];
 	// ticket title. and margin-top + margin-left
-	doc.text('QuickBill', 100, 10, 'center');
+	// doc.text('QuickBill', 100, 10, 'center');
 	doc.text('Bill from :', 150, 30);
-	doc.text('LBS super market', 150, 40);
-	doc.text('parappanagadi', 150, 50);
-	doc.text('673301', 150, 60);
+	doc.text(shop.name, 150, 40);
+	doc.text(shop.address, 150, 50);
+	doc.text(shop.pincode, 150, 60);
+	doc.text(shop.phone, 150, 70);
 	doc.text('Bill to :', 15, 30);
-	doc.text('Sir Rameshan p', 15, 40);
-	doc.text('9895264519', 15, 50);
+	doc.text(customer.label, 15, 40);
+	doc.text(customer.id, 15, 50);
 	// we define the name of our PDF file.
 	doc.save(`QB_${dateStr}.pdf`);
 };

@@ -20,7 +20,7 @@
 .header__logo {
 	color: white;
 	margin-left: 60px;
-	margin-top: 15px;
+	margin-top: 13px;
 	font-family: 'Josefin Sans', sans-serif;
 }
 .search__dropdown {
@@ -47,8 +47,9 @@
 	left: 2;
 	background-color: #2d4e6b;
 	z-index: 200;
-	border-radius: 7px;
-	color: white !important;
+	border-radius: 10px;
+	padding: 5px;
+	color: whitesmoke;
 }
 .navItem {
 	background-color: whiteSmoke;
@@ -62,21 +63,13 @@
 .navItem__left {
 	flex: 1;
 	width: 80%;
-} /* 
-.navItem__right {
-	width: 50%;
-	display: flex;
-	justify-content: space-between;
 }
 
-.navItem__listQty {
-	flex: 50%;
-	overflow: hidden;
-	align-items: center;
-	white-space: nowrap;
-} */
-/* @media screen and (max-width: 992px) {
-	.navItem__listQty {
-		flex: 1;
-	}
-} */
+.info {
+	position: absolute;
+	right: 0;
+	margin-right: 20px;
+	margin-top: 10px;
+	cursor: pointer;
+	color: white;
+}

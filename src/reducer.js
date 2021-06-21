@@ -1,6 +1,7 @@
 export const initialState = {
 	basket: [],
 	user: null,
+	customer: null,
 };
 export const getBasketTotal = (basket) =>
 	basket?.reduce(
@@ -15,53 +16,15 @@ export const getQuantityTotal = (basket) =>
 		0
 	);
 
-/* const reducer = (state, action) => {
-	console.log(action);
-	switch (action.type) 	{
-		case 'addToBasket': {
-			const itemIndex = state.basket.findIndex(
-				(basketItem) => basketItem.id === action.id
-			);
-			let newBasket = [...state.basket];
-			console.log(itemIndex);
-
-			if (itemIndex >= 0) {
-				newBasket[itemIndex].Quantity += 1;
-			} else {
-				newBasket = [...state.basket, action.item];
-			}
-			localStorage.setItem('basket', JSON.stringify(newBasket));
-
-			return {
-				...state,
-				basket: newBasket,
-			};
-		}
-
-		case 'SET_USER':
-			return {
-				...state,
-				user: action.user,
-			};
-
-		default:
-			return state;
-	}
-}; */
-
 const reducer = (state, action) => {
-	console.log(state.basket);
 	switch (action.type) {
-		case 'addToBasket': {
-			/* 	localStorage.setItem('basket', JSON.stringify(newBasket)); */
-			// console.log(state.basket.item);
-			// console.log(itemIndex);
+		case 'ADD_TO_BASKET': {
 			const itemIndex = state.basket.findIndex(
 				(basketItem) => basketItem.id === action.item.id
 			);
 			let newBasket = [...state.basket];
 			if (itemIndex >= 0) {
-				newBasket[itemIndex].quantity += 1;
+				newBasket[itemIndex].quantity += action.item.quantity;
 			} else {
 				newBasket = [...state.basket, action.item];
 			}
@@ -72,7 +35,7 @@ const reducer = (state, action) => {
 				basket: newBasket,
 			};
 		}
-		case 'removeFromBasket': {
+		case 'REMOVE_FROM_BASKET': {
 			const itemIndex = state.basket.findIndex(
 				(basketItem) => basketItem.id === action.item.id
 			);
@@ -82,9 +45,17 @@ const reducer = (state, action) => {
 			} else {
 				console.warn('item not found');
 			}
+			localStorage.setItem('basket', JSON.stringify(newBasket));
+			// console.log(JSON.stringify(newBasket));
 			return {
 				...state,
 				basket: newBasket,
+			};
+		}
+		case 'SET_CUSTOMER': {
+			return {
+				...state,
+				customer: action.customer,
 			};
 		}
 		case 'SET_USER':
@@ -92,7 +63,11 @@ const reducer = (state, action) => {
 				...state,
 				user: action.user,
 			};
-
+		case 'SET_SHOP':
+			return {
+				...state,
+				shop: action.shopData,
+			};
 		default:
 			return state;
 	}

@@ -9,7 +9,7 @@ function NavItem({ item }) {
 	const [counter, setCounter] = useState(1);
 	const addToBasket = () => {
 		dispatch({
-			type: 'addToBasket',
+			type: 'ADD_TO_BASKET',
 			item: {
 				id: item.id,
 				name: item.name,

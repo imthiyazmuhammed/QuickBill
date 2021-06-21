@@ -11,7 +11,7 @@ import CreditCardIcon from '@material-ui/icons/CreditCard';
 const id = auth.currentUser?.uid;
 
 function Customer() {
-	const [{ user }] = useStateValue();
+	const [{ user, shop }, dispatch] = useStateValue([]);
 	const [data, setData] = useState(null);
 	const [customer, setCustomer] = useState([]);
 	const [showShop, setShowShop] = useState(false);
@@ -79,10 +79,21 @@ function Customer() {
 					});
 				}
 			})
+			.then(() => {
+				dispatch({
+					type: 'SET_SHOP',
+					shopData: {
+						name: data.name,
+						address: data.address,
+						phone: data.phone,
+						pincode: data.pincode,
+					},
+				});
+			})
 			.catch((error) => {
 				console.log('error getting document :', error);
 			});
-	}, [data]);
+	});
 	useEffect(() => {
 		db.collection('users')
 			.doc(id)
