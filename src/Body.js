@@ -194,7 +194,7 @@ function Body() {
 						<h6>Search and list products here...</h6>
 					</div>
 					<div className="updates mt-5 mb-5">
-						<pre className="">✔ Login with google authentication</pre>
+					<pre className="">✔ Login with google authentication</pre>
 						<pre>✔ CRUD functionality on products</pre>
 						<pre>✔ Easy search of added products</pre>
 						<pre>✔ Create PDF invoice with the listed items</pre>

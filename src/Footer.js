@@ -7,29 +7,31 @@ import './Footer.css';
 
 function Footer() {
 	return (
+	<div className="footer__Base">
 		<div className="footer">
 			<Link to="/Customer">
 				<AccountCircleIcon
 					fontSize="large"
-					style={{ fill: '#2d4e6b' }}
+					style={{ fill: 'white' }}
 					className="footer__icon"
 				/>
 			</Link>
 			<Link to="/Products">
 				<ListIcon
 					fontSize="large"
-					style={{ fill: '#2d4e6b' }}
+					style={{ fill: 'white' }}
 					className="footer__icon"
 				/>
 			</Link>
 			<Link to="/Pdf">
 				<GetAppIcon
 					fontSize="large"
-					style={{ fill: '#2d4e6b' }}
+					style={{ fill: 'white' }}
 					className="footer__icon"
 				/>
 			</Link>
 		</div>
+	</div>
 	);
 }
 

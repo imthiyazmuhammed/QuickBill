@@ -1,6 +1,7 @@
 .body {
 	padding: 0.5rem;
-	margin-top: 10px;
+	padding-top: 10px;
+	background-color: #EFF7FF;
 }
 .body__heading {
 	text-align: center;
@@ -45,11 +46,14 @@ td {
 
 .body__header {
 	display: flex;
+	margin-bottom: 20px;
+	justify-content: center;
+	align-items: center;
 }
 .selectcustomer {
 	flex-grow: 1;
 }
-.body__header>p{
+.body__header > p {
 	margin-top: 5px;
 	font-weight: 500;
 }
